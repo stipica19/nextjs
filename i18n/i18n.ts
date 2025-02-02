@@ -1,4 +1,4 @@
-import { getRequestConfig } from "next-intl/server";
+/*import { getRequestConfig } from "next-intl/server";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -15,3 +15,4 @@ export default getRequestConfig(async () => {
         messages: (await import(`./locales/${locale}.json`)).default,
     };
 });
+*/

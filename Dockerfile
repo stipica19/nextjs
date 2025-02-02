@@ -12,6 +12,7 @@ RUN npm install
 
 # 5️⃣ Kopiramo sve fajlove u kontejner
 COPY . .
+COPY .env .env
 
 # 6️⃣ Gradimo Next.js aplikaciju
 RUN npm run build

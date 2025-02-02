@@ -9,8 +9,8 @@ import Unterkunft from "@/components/Unterkunft";
 import { useTranslations } from "next-intl";
 
 // ✅ SEO metapodaci za Google i društvene mreže
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = params.locale;
+/*export async function generateMetadata({ params }: { params?: { locale?: string } }) {
+  const locale = params?.locale ?? 'en';
 
   return {
     title: locale === "de" ? "Enduro Touren in Bosnien" : "Enduro Tours in Bosnia",
@@ -39,8 +39,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     },
   };
 }
-
-export default function Home() {
+*/
+type Props = {
+  params: { locale: string }
+}
+export default function Home({ params: { locale } }: Props) {
   const t = useTranslations();
 
   return (

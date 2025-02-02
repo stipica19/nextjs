@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import createMiddleware from "next-intl/middleware";
 
-const intlMiddleware = createMiddleware({
-  locales: ["en", "de"],
-  defaultLocale: "de",
-});
+import {routing} from './i18n/routing';
+
+
+const intlMiddleware = createMiddleware(routing);
+
 
 export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;

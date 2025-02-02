@@ -3,8 +3,6 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
-
-
 export default function Rules() {
   const t = useTranslations();
 
@@ -25,7 +23,7 @@ export default function Rules() {
         {/* Lista pravila */}
         <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 lg:p-10">
           <ul className="text-left space-y-4">
-            {rules.slice(0, showAll ? rules.length : 5).map((rule, index) => (
+            {rules.slice(0, showAll ? rules.length : 5).map((rule: string, index: number) => (
               <li key={index} className="flex items-center text-gray-800 text-sm">
                 <FaCheckCircle className="text-green-600 mr-3" />
                 {rule}

@@ -15,7 +15,7 @@ const Anmeldung = () => {
   return (
     <section className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat px-6 lg:px-20 py-20"
       style={{ backgroundImage: "url('/background.jpg')" }}>
-      
+
       {/* Overlay za bolji kontrast */}
       <div className="absolute inset-0 bg-black/50"></div>
 
@@ -26,7 +26,7 @@ const Anmeldung = () => {
 
         {/* Glavni sadržaj */}
         <div className="grid md:grid-cols-2 gap-12">
-          
+
           {/* Tabela sa turama */}
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
@@ -47,9 +47,8 @@ const Anmeldung = () => {
                     <td className="p-3">{tour.date}</td>
                     <td className="p-3 text-center">
                       <span
-                        className={`px-3 py-1 rounded-full text-white text-sm ${
-                          tour.available ? "bg-green-500" : "bg-red-500"
-                        }`}
+                        className={`px-3 py-1 rounded-full text-white text-sm ${tour.available ? "bg-green-500" : "bg-red-500"
+                          }`}
                       >
                         {tour.available ? "Verfügbar" : "Nicht verfügbar"}
                       </span>
@@ -123,7 +122,7 @@ const Anmeldung = () => {
                 </label>
                 <textarea
                   className="w-full p-3 border border-gray-300 rounded-lg"
-                  rows="3"
+                  rows={3}
                   placeholder="Ihre Nachricht hier eingeben..."
                 ></textarea>
               </div>
@@ -139,8 +138,8 @@ const Anmeldung = () => {
           </div>
 
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 

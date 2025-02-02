@@ -19,15 +19,15 @@ export default function Galerie() {
   ];
 
   return (
-    <div style={styles.container}>
+    <div className="container mx-auto px-4 py-10 text-center">
       {/* Masonry Gallery */}
-      <div className="masonry">
+      <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
         {photos.map((src, index) => (
-          <div key={index} style={styles.masonryItem}>
+          <div key={index} className="break-inside-avoid">
             <img
               src={src}
               alt={`Slika ${index + 1}`}
-              style={styles.image}
+              className="w-full rounded-lg cursor-pointer transition-transform duration-200 hover:scale-105"
               onClick={() => setSelectedImage(src)}
             />
           </div>
@@ -35,55 +35,14 @@ export default function Galerie() {
       </div>
 
       {/* Modal za prikaz uvećane slike */}
-      {
-        selectedImage && (
-          <div style={styles.modal} onClick={() => setSelectedImage(null)}>
-            <img src={selectedImage} alt="Uvećana slika" style={styles.modalImage} />
-          </div>
-        )
-      }
-    </div >
+      {selectedImage && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img src={selectedImage} alt="Uvećana slika" className="max-w-5xl max-h-[90vh] rounded-lg" />
+        </div>
+      )}
+    </div>
   );
 }
-
-const styles = {
-  container: {
-    padding: "20px",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    textAlign: "center" as const,
-  },
-  masonry: {
-    columnCount: 3, // 3 kolone za veće ekrane
-    columnGap: "10px",
-    margin: "0 auto",
-  },
-  masonryItem: {
-    breakInside: "avoid", // Sprečava da se slike lome između kolona
-    marginBottom: "10px",
-  },
-  image: {
-    width: "100%",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "transform 0.2s ease-in-out",
-  },
-  modal: {
-    position: "fixed" as const,
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 1000,
-  },
-  modalImage: {
-    maxWidth: "90%",
-    maxHeight: "90%",
-    borderRadius: "8px",
-  },
-};
-

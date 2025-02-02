@@ -4,23 +4,32 @@ import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Providers from "../providers";
 
+import { routing } from '@/i18n/routing';
+import { getMessages } from 'next-intl/server';
 
-// 📌 Generišemo SEO meta podatke
 export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = params.locale;
+  // ✅ Očekuj asinhrono učitavanje parametara
+  const { locale } = await Promise.resolve(params);
+
   return {
-    title: locale === "de" ? "Enduro Touren in Bosnien | Enduro Drift Bosnien - Entdecken Sie das Abenteuer!" : "Enduro Touren in Bosnien | Enduro Drift Bosnien - Entdecken Sie das Abenteuer!",
-    description: locale === "de"
-      ? "Fordern Sie sich selbst heraus zu einem unvergesslichen Enduro-Abenteuer durch die wunderschönen bosnischen Berge mit Enduro Bosnien Tours. Wir bieten ein kraftvolles Enduro-Erlebnis mit faszinierendem Blick auf die Landschaft. Entdecken Sie die besten Enduro-Touren in Bosnien, wo jeder Moment den Geist des Abenteuers erweckt. Schließen Sie sich uns an und spüren Sie die Kraft des Enduro-Motorradfahrens im Herzen des Balkans."
-      : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
-    keywords: locale === "de"
-      ? "Enduro Touren, Motorrad, Offroad, Bosnien, Abenteuer,Enduro touren Bosnien,enduro balkan, ktm,Enduro Croatia"
-      : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
+    title:
+      locale === "de"
+        ? "Enduro Touren in Bosnien | Enduro Drift Bosnien - Entdecken Sie das Abenteuer!"
+        : "Enduro Tours in Bosnia | Enduro Drift Bosnia - Discover the Adventure!",
+    description:
+      locale === "de"
+        ? "Fordern Sie sich selbst heraus zu einem unvergesslichen Enduro-Abenteuer durch die wunderschönen bosnischen Berge mit Enduro Bosnien Tours."
+        : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
+    keywords:
+      locale === "de"
+        ? "Enduro Touren, Motorrad, Offroad, Bosnien, Abenteuer,Enduro touren Bosnien,enduro balkan, ktm,Enduro Croatia"
+        : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
     openGraph: {
       title: locale === "de" ? "Enduro Drift Bosnien - Offroad Touren" : "Enduro Drift Bosnia - Offroad Tours",
-      description: locale === "de"
-        ? "Erleben Sie die besten Enduro-Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
-        : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
+      description:
+        locale === "de"
+          ? "Erleben Sie die besten Enduro-Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
+          : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
       url: `https://endurodriftbosnien.com/`,
       siteName: "Enduro Drift Bosnien",
       images: [
@@ -37,28 +46,20 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 
-// 📌 Funkcija za dohvaćanje prevoda
-async function getMessages(locale: string) {
-  try {
-    return (await import(`@/locales/${locale}.json`)).default;
-  } catch (error) {
+
+export async function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+export default async function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
+  const locale = params.locale as "en" | "de";
+
+  if (!routing.locales.includes(locale)) {
     notFound();
   }
-}
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "de" }]; // ✅ Generišemo podržane jezike
-}
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  const locale = params.locale; // ✅ Osiguravamo da `params.locale` postoji
-  const messages = await getMessages(locale); // ✅ Osiguravamo da učitamo prevode
-
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
