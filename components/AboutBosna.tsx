@@ -45,27 +45,27 @@ export default function AboutBosna() {
   const t = useTranslations();
 
   return (
-    <section className="py-20 bg-gray-10">
+    <section className="py-2 bg-gray-10">
       <div className="container mx-auto px-1 lg:px-20 text-center">
         {/* Naslov */}
-        <h2 className="sm:text-base md:text-3xl   font-roboto font-semibold text-gray-900 mb-8">
+        <h2 className="sm:text-base md:text-3xl   font-roboto font-semibold text-gray-900 mb-4">
           🏔️ {t("best_title")}
         </h2>
 
         {/* Opis */}
-        <p className="text-sm sm:text-base md:text-lg mt-2  text-gray-700 text-left mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p1")}
 
         </p>
-        <p className="text-sm sm:text-base md:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p2")}
         </p>
-        <p className="text-sm sm:text-base md:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p3")}
 
         </p>
 
-        <p className="text-sm sm:text-base md:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p4")}
 
         </p>

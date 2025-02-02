@@ -26,7 +26,7 @@ export default function Unterkunft() {
           {t("hotel_title")}
           <span className="absolute bottom-0 left-0 w-16 h-1 bg-red-600"></span>
         </h2>
-        <p className="text-lg mt-2 text-gray-700 text-left mx-auto mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("hotel")}
         </p>
 

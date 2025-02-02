@@ -26,10 +26,10 @@ const About = () => {
 
         {/* Desna strana - Slika */}
         <div className="lg:w-1/2 flex justify-center">
-          <div className="relative w-[450px] h-[450px] rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
+          <div className="relative w-[350px] h-[450px] rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
             <Image
-              width={350}
-              height={450}
+              width={250}
+              height={550}
               src="/ckalja-motor.webp"
               alt="Enduro Rider"
               className="rounded-xl object-cover w-full h-full"

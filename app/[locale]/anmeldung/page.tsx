@@ -1,7 +1,10 @@
 'use client'
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TourTabele from "@/components/TourTabele";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { fetchTours } from "@/store/tourSlice";
 
 interface TourType {
   _id: string;
@@ -15,9 +18,49 @@ interface TourType {
   updatedAt: string;
   tour_id: string;
 }
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  const { locale } = params;
 
+  return {
+    title: locale === "de"
+      ? "Anmeldung - Enduro Drift Bosnien"
+      : "Registration - Enduro Drift Bosnia",
 
+    description: locale === "de"
+      ? "Melden Sie sich für unsere Enduro-Touren an und erleben Sie ein einzigartiges Offroad-Abenteuer!"
+      : "Sign up for our Enduro tours and experience an unforgettable offroad adventure!",
 
+    keywords: locale === "de"
+      ? "Enduro Anmeldung, Touren Bosnien, Motorrad Offroad"
+      : "Enduro Registration, Tours Bosnia, Motorcycle Offroad",
+
+    openGraph: {
+      title: locale === "de"
+        ? "Anmeldung - Enduro Drift Bosnien"
+        : "Registration - Enduro Drift Bosnia",
+
+      description: locale === "de"
+        ? "Melden Sie sich für unsere Enduro-Touren an und erleben Sie ein einzigartiges Offroad-Abenteuer!"
+        : "Sign up for our Enduro tours and experience an unforgettable offroad adventure!",
+
+      url: `https://endurodriftbosnien.com/${locale}/anmeldung`,
+      siteName: "Enduro Drift Bosnia",
+
+      images: [
+        {
+          url: "https://endurodriftbosnien.com/bg_anmeldung.webp",
+          width: 1200,
+          height: 630,
+          alt: locale === "de"
+            ? "Anmeldung - Enduro Drift Bosnien"
+            : "Registration - Enduro Drift Bosnia",
+        },
+      ],
+
+      type: "website",
+    },
+  };
+}
 
 
 
@@ -34,13 +77,14 @@ export default function AnmeldungPage() {
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [tours, setTours] = useState<TourType[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const tours = useSelector((state: RootState) => state.tours.tours);
+  const status = useSelector((state: RootState) => state.tours.status);
+
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const t = useTranslations();
-
-
 
 
 

@@ -66,7 +66,7 @@ export default function Tour() {
       <div className="absolute inset-0 bg-[url('/splash1.webp')] bg-no-repeat bg-center bg-cover opacity-10"></div>
 
       <div className="container mx-auto px-6 lg:px-20 text-center">
-        <h2 className="text-4xl font-extrabold text-gray-900 mb-12">
+        <h2 className="text-4xl font-extrabold text-gray-900 mb-10">
           🏍️ {t("toure_title")}
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 ">
@@ -95,7 +95,7 @@ export default function Tour() {
                 {/* Cjenik */}
                 <div className="mt-4 text-left ">
                   <p className="text-[12px] font-semibold text-black-300 ml-[6%]">
-                    💰 Cijene:
+                    💰 {t("prices_title")}
                   </p>
                   <p className="text-black ml-[7%] text-[12px]">
                     {t(tour.prices.ownBike)}
@@ -119,6 +119,7 @@ export default function Tour() {
                 </ul>
                 <Link href="/de/anmeldung">
                   {/* Dugme za rezervaciju */}
+
                   <button className="mt-6 mr-20 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition w-3/4 font-semibold">
                     {t("dugme")}
                   </button>

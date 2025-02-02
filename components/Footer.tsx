@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa";
 
 const partners = ["/saloon.png", "/saraj.webp", "/zona.png", "/fork-socks.png"];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12 text-[10px] sm:text-[12px] md:text-[16px]" >
+    <footer className="bg-gray-900 text-white py-12 text-[12px] sm:text-[14px] md:text-[16px]" >
       <div className="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Kontakt podaci */}
         <div>
@@ -73,7 +74,11 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="mt-8 text-center text-gray-500 border-t border-gray-700 pt-6">
-        © {new Date().getFullYear()} Enduro Drift Bosnia | Sva prava zadržana.
+        © {new Date().getFullYear()} Enduro Drift Bosnia | All rights reserved. <Link href="https://www.linkedin.com/in/stipica-klepic/" target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold hover:underline">
+          Design by Stipica
+        </Link>
       </div>
     </footer>
   );

@@ -42,7 +42,7 @@ export async function POST(req) {
 
           <p style="font-size: 16px; color: #555; margin-top: 20px;">
               Wenn Sie weitere Fragen haben, können Sie uns gerne unter kontaktieren 
-              <a href="mailto:endurodriftbosnien@gmail.com" style="color: #007bff; text-decoration: none;">info@endurodriftbosnien.com</a>
+              <a href="mailto:endurodriftbosnien@gmail.com" style="color: #007bff; text-decoration: none;">endurodriftbosnien@gmail.com</a>
           </p>
 
           <div style="text-align: center; margin-top: 30px;">

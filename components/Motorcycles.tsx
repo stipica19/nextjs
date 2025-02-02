@@ -25,19 +25,21 @@ export default function Motorcycles() {
         <h2 className="text-4xl font-bold text-gray-900 mb-6">
           MOTORCYCLES
         </h2>
-        <p className="text-lg mt-2 text-gray-700 text-left mx-auto mx-auto max-w-[80%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("moto_p1")}
         </p>
 
         {/* Opis */}
+        <p className="regular-16 font-roboto mt-6 text-gray-30 "></p>
+
         <div className="text-left  mx-auto mt-6 text-gray-700">
-          <p className="text-lg mt-2 text-gray-700 text-left  mx-auto max-w-[80%] leading-relaxed">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("moto_p2")}
           </p>
-          <p className="text-lg mt-2 text-gray-700 text-left  mx-auto max-w-[80%] leading-relaxed">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("moto_p3")}
           </p>
-          <p className="text-lg mt-2 text-gray-700 text-left  mx-auto max-w-[80%] leading-relaxed">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("moto_p4")} 👇
           </p>
           <ul className="mt-2 font-semibold mx-auto max-w-[80%]">
@@ -65,12 +67,12 @@ export default function Motorcycles() {
         </div>
 
         {/* Oprema */}
-        <div className="mt-12  p-6 lg:p-10 text-left">
+        <div className="mt-4 p-2 lg:p-10 text-left">
           <h3 className="text-2xl text-center font-bold text-gray-900">🏍️{t("gang_title")}</h3>
-          <p className="text-left  max-w-[80%] mx-auto mt-6 text-gray-700">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("gang")}
           </p>
-          <p className="text-left max-w-[80%] mx-auto mt-6 text-gray-700">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("gang1")}
           </p>
           <ul className=" space-y-2  font-semibold text-left  max-w-[80%] mx-auto mt-6 text-gray-700">
@@ -79,7 +81,7 @@ export default function Motorcycles() {
             <li>🧤 {t("gang4")}</li>
             <li>🛡️ {t("gang5")}</li>
           </ul>
-          <p className="mt-4  text-left  max-w-[80%] mx-auto mt-6 text-gray-700">
+          <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("gang6")}
           </p>
         </div>
