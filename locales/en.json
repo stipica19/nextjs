@@ -103,7 +103,10 @@
   "submit_loading": "Sending...",
   "success_message": "Your registration was successful!",
   "error_message": "There was an error with your registration.",
-  "rule_title":"Rule",
+
+"tour_guide": "Mladen Brnas (Pinky) - Head of the Guide Team",
+"tour_guide1": "The head of our team is Mladen Brnas, a highly experienced enduro rider and driving instructor at his own driving school. Mladen participates in numerous enduro competitions in Bosnia and Herzegovina, where he has achieved remarkable results. His performances in the enduro races in Visoko and Tomislavgrad were particularly impressive. He is extremely friendly and determined to provide our guests with the enjoyment of enduro riding.",
+"rule_title":"Rule",
   "rules": [
     "🏍️ Make sure your bike is ready for the tour",
     "🚧 Do not leave the trail",
