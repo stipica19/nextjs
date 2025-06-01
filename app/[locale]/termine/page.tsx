@@ -2,49 +2,7 @@ import TourTabele from "@/components/TourTabele";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-    const { locale } = params;
 
-    return {
-        title: locale === "de"
-            ? "Termine - Enduro Drift Bosnien"
-            : "Dates - Enduro Drift Bosnia",
-
-        description: locale === "de"
-            ? "Hier finden Sie alle geplanten Enduro-Touren und Veranstaltungen."
-            : "Find all planned Enduro tours and events here.",
-
-        keywords: locale === "de"
-            ? "Enduro Termine, Motorrad Veranstaltungen, Offroad Bosnien"
-            : "Enduro Dates, Motorcycle Events, Offroad Bosnia",
-
-        openGraph: {
-            title: locale === "de"
-                ? "Termine - Enduro Drift Bosnien"
-                : "Dates - Enduro Drift Bosnia",
-
-            description: locale === "de"
-                ? "Hier finden Sie alle geplanten Enduro-Touren und Veranstaltungen."
-                : "Find all planned Enduro tours and events here.",
-
-            url: `https://endurodriftbosnien.com/${locale}/termine`,
-            siteName: "Enduro Drift Bosnia",
-
-            images: [
-                {
-                    url: "https://endurodriftbosnien.com/bg_termine.webp",
-                    width: 1200,
-                    height: 630,
-                    alt: locale === "de"
-                        ? "Termine - Enduro Drift Bosnien"
-                        : "Dates - Enduro Drift Bosnia",
-                },
-            ],
-
-            type: "website",
-        },
-    };
-}
 
 
 

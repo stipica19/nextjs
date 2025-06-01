@@ -24,7 +24,10 @@ const Hero = () => {
 
       {/* L strana - Tekst i dugme */}
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
-
+        {/* AKCIJA
+         <div className="bg-red-600 text-white font-bold text-center py-2 px-4 rounded-md  text-lg animate-bounce">
+          {t("akcija")}
+        </div> */}
         <h1 className="bold-52 lg:bold-88">
           Enduro Drift <span className="text-red-500">Bosnien</span>{" "}
         </h1>

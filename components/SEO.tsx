@@ -29,7 +29,7 @@ export default function SEO({
                 site_name: "Enduro Drift Bosnien",
                 images: [
                     {
-                        url: image || "https://endurodriftbosnien.com/og-image.jpg",
+                        url: image || "https://www.endurodriftbosnien.com/enduro_tour_bosnia.png",
                         width: 1200,
                         height: 630,
                         alt: "Enduro Drift Bosnien - Offroad Adventure",

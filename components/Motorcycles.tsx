@@ -67,7 +67,7 @@ export default function Motorcycles() {
         </div>
 
         {/* Oprema */}
-        <div className="mt-4 p-2 lg:p-10 text-left">
+        <div className="mt-4 p-2  text-left">
           <h3 className="text-2xl text-center font-bold text-gray-900">🏍️{t("gang_title")}</h3>
           <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("gang")}

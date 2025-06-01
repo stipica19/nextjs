@@ -2,19 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getNavLinks } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "@/store/store"; // Adjusted the import path to use an absolute path based on Next.js alias
+import { loadUser, logout } from "@/store/userSlice";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const locale = pathname.split("/")[1]; // ✅ Uzimamo locale iz URL-a
+  const locale = pathname.split("/")[1]; //  Uzimamo locale iz URL-a
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const navLinks = getNavLinks(locale);
+  const [openDropdownKey, setOpenDropdownKey] = useState<string | null>(null);
 
+  const user = useSelector((state: RootState) => state.user); // Uzimamo korisnika iz Redux store-a
+
+  const navLinks = getNavLinks(locale, user);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState("de");
@@ -32,23 +37,76 @@ const Navbar = () => {
     router.push(newPathname); // Navigiramo na novi jezik
   };
 
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout");
+    dispatch(logout());
+    router.push(`/${locale}`);
+  };
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <nav className="flex justify-between items-center max-container padding-container relative z-30 py-5">
-
-      {/* Logo */}
+      {/* Logo - Navbar */}
       <Link href="/">
-        <Image src="/logo.png" alt="Enduro Drift Bosnien Logo" width={74} height={29} priority />
+        <Image
+          src="/logo.png"
+          alt="Enduro Drift Bosnien Logo"
+          width={74}
+          height={29}
+          priority
+        />
       </Link>
 
       {/* Desktop Navigacija */}
       <ul className="hidden lg:flex items-center gap-12">
-        {navLinks?.map((link) => (
-          <li key={link.key}>
-            <Link href={link.href} className="text-gray-800 hover:text-black  font-roboto font-medium transition-all">
-              {link.label.toUpperCase()}
-            </Link>
-          </li>
-        ))}
+        {navLinks?.map((link) =>
+          link.subLinks ? (
+            <li key={link.key} className="relative group">
+              <span className="text-gray-800 hover:text-black font-roboto font-medium cursor-pointer">
+                {link.label}
+              </span>
+              <ul className="absolute hidden group-hover:block bg-white shadow-md rounded mt-0 py-1 w-40 z-50">
+                {link.subLinks.map((subLink) =>
+                  subLink.label === "Logout" ? (
+                    <li key="logout">
+                      <button
+                        onClick={() => {
+                          handleLogout();
+                          setMenuOpen(false);
+                        }}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  ) : (
+                    <li key={subLink.href}>
+                      <Link
+                        href={subLink.href || "#"}
+                        onClick={() => setMenuOpen(false)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        {subLink.label}
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            </li>
+          ) : (
+            <li key={link.key}>
+              <Link
+                href={link.href || "#"}
+                className="text-gray-800 hover:text-black font-roboto font-medium transition-all"
+              >
+                {link.label}
+              </Link>
+            </li>
+          )
+        )}
       </ul>
 
       {/* Jezički izbor */}
@@ -57,35 +115,90 @@ const Navbar = () => {
           <button
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
-
-            className={`flex mr-2 items-center gap-1 px-3 py-2 rounded-md ${language === lang.code ? "bg-gray-200" : "bg-gray-100"}`}
+            className={`flex mr-2 items-center gap-1 px-3 py-2 rounded-md ${
+              language === lang.code ? "bg-gray-200" : "bg-gray-100"
+            }`}
           >
             <Image src={lang?.icon} alt={lang.label} width={24} height={24} />
           </button>
         ))}
       </div>
 
-
-
       {/* Mobile Menu Button */}
       <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden">
-        <Image src="/menu.png" alt="Menu" width={32} height={32} className="cursor-pointer" />
+        <Image
+          src="/menu.png"
+          alt="Menu"
+          width={32}
+          height={32}
+          className="cursor-pointer"
+        />
       </button>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform ${menuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out z-50`}>
-        <button onClick={() => setMenuOpen(false)} className="absolute top-5 right-5">
-
-        </button>
+      <div
+        className={`fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
+      >
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-5 right-5"
+        ></button>
 
         <ul className="flex flex-col items-start mt-16 px-6 space-y-4">
-          {navLinks?.map((link) => (
-            <li key={link.key}>
-              <Link href={link.href} onClick={() => setMenuOpen(false)} className="text-gray-800 text-lg font-medium block py-2">
-                {link.label.toUpperCase()}
-              </Link>
-            </li>
-          ))}
+          {navLinks?.map((link) =>
+            link.subLinks ? (
+              <div key={link.key} className="w-full">
+                <button
+                  onClick={() =>
+                    setOpenDropdownKey((prevKey) =>
+                      prevKey === link.key ? null : link.key
+                    )
+                  }
+                  className="text-gray-700 text-lg font-medium block py-2"
+                >
+                  {link.label} {openDropdownKey === link.key ? "▲" : "▼"}
+                </button>
+                {openDropdownKey === link.key &&
+                  link.subLinks.map((subLink) =>
+                    subLink.label === "Logout" ? (
+                      <li key="logout" className="ml-4">
+                        <button
+                          onClick={() => {
+                            handleLogout();
+                            setMenuOpen(false);
+                          }}
+                          className="text-gray-800 text-sm uppercase block py-2 hover:text-black w-full text-left"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    ) : (
+                      <li key={subLink.href} className="ml-4">
+                        <Link
+                          href={subLink.href || "#"}
+                          onClick={() => setMenuOpen(false)}
+                          className="text-gray-800 text-sm uppercase block py-2 hover:text-black"
+                        >
+                          {subLink.label}
+                        </Link>
+                      </li>
+                    )
+                  )}
+              </div>
+            ) : (
+              <li key={link.key}>
+                <Link
+                  href={link.href || "#"}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-gray-800 text-lg font-medium block py-2"
+                >
+                  {link.label.toUpperCase()}
+                </Link>
+              </li>
+            )
+          )}
         </ul>
 
         {/* Jezički izbor u mobilnom meniju */}
@@ -93,20 +206,33 @@ const Navbar = () => {
           <p className="text-gray-700 font-medium">Language:</p>
           <div className="flex space-x-4 mt-2">
             {languages.map((lang) => (
-              <button key={lang.code} onClick={() => changeLanguage(lang.code)} className={`flex flex-col items-center gap-3 px-3 py-2 rounded-md ${language === lang.code ? "bg-gray-200" : "bg-gray-100"}`}>
-                <Image src={lang?.icon} alt={lang.label} width={24} height={24} />
+              <button
+                key={lang.code}
+                onClick={() => changeLanguage(lang.code)}
+                className={`flex flex-col items-center gap-3 px-3 py-2 rounded-md ${
+                  language === lang.code ? "bg-gray-200" : "bg-gray-100"
+                }`}
+              >
+                <Image
+                  src={lang?.icon}
+                  alt={lang.label}
+                  width={24}
+                  height={24}
+                />
                 <span>{lang.label.toUpperCase()}</span>
               </button>
             ))}
           </div>
         </div>
-
-
       </div>
 
       {/* Overlay kada je meni otvoren */}
-      {menuOpen && <div className="fixed inset-0 bg-black/50 lg:hidden" onClick={() => setMenuOpen(false)}></div>}
-
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 lg:hidden"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
     </nav>
   );
 };

@@ -1,41 +1,26 @@
-import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { NextRequest, NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 import connectDB from "@/lib/connect-db";
 import User from "@/models/User";
 
 export async function GET(req) {
-  await connectDB();
-  let token;
+  try {
+    await connectDB();
 
-  // Proveravamo da li postoji Bearer token u `Authorization` headeru
-  const authHeader = req.headers.get("authorization");
+    const token = req.cookies.get("token")?.value;
+    if (!token)
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    try {
-      token = authHeader.split(" ")[1]; // Dobijamo token
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+    const { payload } = await jwtVerify(token, secret);
 
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await User.findById(decoded.id).select("-password");
+    const user = await User.findById(payload.id).select("email isAdmin");
 
-      if (!user) {
-        return NextResponse.json(
-          { message: "User not found" },
-          { status: 401 }
-        );
-      }
-
-      return NextResponse.json({ user }, { status: 200 });
-    } catch (error) {
-      console.error("JWT Error:", error);
-      return NextResponse.json(
-        { message: "Not authorized, token failed" },
-        { status: 401 }
-      );
-    }
+    return NextResponse.json({
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } catch (error) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
-
-  return NextResponse.json(
-    { message: "Not authorized, no token" },
-    { status: 401 }
-  );
 }

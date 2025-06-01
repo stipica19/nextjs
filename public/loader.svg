@@ -1,0 +1,26 @@
+export default function EnduroLoader() {
+  return (
+    <div className="flex flex-col items-center justify-center py-10 text-center">
+      <div className="animate-spin-slow mb-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="orange"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-16 h-16"
+        >
+          <path d="M5 16a3 3 0 1 0 3 3" />
+          <path d="M19 16a3 3 0 1 0 3 3" />
+          <path d="M5 16l5-5 5 5h4l-2-4h-3l-3-4" />
+          <path d="M3 3h2l1 5h2l2-2 2 2h3" />
+        </svg>
+      </div>
+      <p className="text-gray-700 text-lg font-semibold">Učitavam prijave... 🏍️</p>
+    </div>
+  );
+}

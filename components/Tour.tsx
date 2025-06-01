@@ -6,13 +6,13 @@ const tours = [
   {
     id: 1,
     title: "tour1_title",
-
     image: "/tura1-map.webp",
     prices: {
       ownBike: "tour1_priceOwnBike",
       rentalBike: "tour1_priceRentalBike",
     },
     details: [
+      "tour1_detail6",
       "tour1_detail1",
       "tour1_detail2",
       "tour1_detail3",
@@ -30,6 +30,7 @@ const tours = [
       rentalBike: "tour2_priceRentalBike",
     },
     details: [
+      "tour2_detail6",
       "tour2_detail1",
       "tour2_detail2",
       "tour2_detail3",
@@ -47,6 +48,7 @@ const tours = [
       rentalBike: "tour3_priceRentalBike",
     },
     details: [
+      "tour3_detail6",
       "tour3_detail1",
       "tour3_detail2",
       "tour3_detail3",
@@ -58,8 +60,6 @@ const tours = [
 
 export default function Tour() {
   const t = useTranslations();
-
-
 
   return (
     <section className="relative  py-20 bg-gray-10">

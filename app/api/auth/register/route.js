@@ -16,7 +16,6 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-
     // Kreiraj korisnika
     const user = await User.create({ name, email, password });
 

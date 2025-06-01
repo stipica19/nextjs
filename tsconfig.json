@@ -19,8 +19,13 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".", // ✅ Dodajemo baseUrl da bi `paths` radio
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"],
+      "@/utils/*": ["utils/*"],
+      "@/styles/*": ["styles/*"],
+      "@/store/*": ["store/*"]
     }
   },
   "include": [
@@ -28,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "middleware.js"
+    "middleware.js",
+    "lib/cloudinary.js"
   ],
   "exclude": ["node_modules"]
 }

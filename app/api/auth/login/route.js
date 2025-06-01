@@ -33,7 +33,14 @@ export async function POST(req) {
       .sign(secret);
 
     const response = NextResponse.json(
-      { message: "Login successful" },
+      {
+        message: "Login successful",
+        token, // ⬅️ Dodaj token u odgovor
+        user: {
+          email: user.email,
+          isAdmin: user.isAdmin,
+        },
+      },
       { status: 200 }
     );
     response.cookies.set("token", token, {

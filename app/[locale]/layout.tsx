@@ -4,11 +4,15 @@ import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Providers from "../providers";
 
-import { routing } from '@/i18n/routing';
-import { getMessages } from 'next-intl/server';
+import { routing } from "@/i18n/routing";
+import { getMessages } from "next-intl/server";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  // ✅ Očekuj asinhrono učitavanje parametara
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const { locale } = await Promise.resolve(params);
 
   return {
@@ -25,19 +29,22 @@ export async function generateMetadata({ params }: { params: { locale: string } 
         ? "Enduro Touren, Motorrad, Offroad, Bosnien, Abenteuer,Enduro touren Bosnien,enduro balkan, ktm,Enduro Croatia"
         : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
     openGraph: {
-      title: locale === "de" ? "Enduro Drift Bosnien - Offroad Touren" : "Enduro Drift Bosnia - Offroad Tours",
+      title:
+        locale === "de"
+          ? "Enduro Drift Bosnien - Offroad Touren"
+          : "Enduro Drift Bosnia - Offroad Tours",
       description:
         locale === "de"
           ? "Erleben Sie die besten Enduro-Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
           : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
-      url: `https://endurodriftbosnien.com/`,
+      url: `https://www.endurodriftbosnien.com/de`,
       siteName: "Enduro Drift Bosnien",
       images: [
         {
-          url: "https://endurodriftbosnien.com/bg_termine.webp",
+          url: "https://res.cloudinary.com/stipica/image/upload/c_limit,w_2048/f_auto/q_auto/v1/Your_paragraph_text_1_jabt8n?_a=BAVAZGBz0",
+          alt: "Enduro Drift Bosnien - Offroad Adventure",
           width: 1200,
           height: 630,
-          alt: "Enduro Drift Bosnien - Offroad Adventure",
         },
       ],
       type: "website",
@@ -45,36 +52,33 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-
-
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-export default async function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
-  const locale = params.locale as "en" | "de";
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const { locale } = await params;
 
-  if (!routing.locales.includes(locale)) {
+  if (!routing.locales.includes(locale as "de" | "en")) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
-      <head>
-        {/* ✅ Ručno dodani SEO meta tagovi */}
-        <meta name="author" content="Enduro Drift Bosnien" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`https://endurodriftbosnien.com`} />
-      </head>
       <body>
         <Providers locale={locale} messages={messages}>
           <div className="mx-auto screen">
             <Navbar />
             <main className="relative overflow-hidden">{children}</main>
             <Footer />
+            <ScrollToTopButton />
           </div>
         </Providers>
       </body>

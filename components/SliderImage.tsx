@@ -7,8 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import Image from "next/image";
 
-
-
 const slides = [
   { id: 1, src: "/bg_termine.webp", alt: "Enduro Tour 1" },
   { id: 2, src: "/prokosko.webp", alt: "Enduro Tour 2" },

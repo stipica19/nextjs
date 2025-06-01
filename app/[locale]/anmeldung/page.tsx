@@ -1,71 +1,17 @@
-'use client'
+"use client";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TourTabele from "@/components/TourTabele";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/store/store";
-import { fetchTours } from "@/store/tourSlice";
-
-interface TourType {
-  _id: string;
-  tour_number: string;
-  checkIn_date: string;
-  checkOut_date: string;
-  tour_duration: string;
-  tour_availability: boolean;
-  tour_space: number;
-  createdAt: string;
-  updatedAt: string;
-  tour_id: string;
-}
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-
-  return {
-    title: locale === "de"
-      ? "Anmeldung - Enduro Drift Bosnien"
-      : "Registration - Enduro Drift Bosnia",
-
-    description: locale === "de"
-      ? "Melden Sie sich für unsere Enduro-Touren an und erleben Sie ein einzigartiges Offroad-Abenteuer!"
-      : "Sign up for our Enduro tours and experience an unforgettable offroad adventure!",
-
-    keywords: locale === "de"
-      ? "Enduro Anmeldung, Touren Bosnien, Motorrad Offroad"
-      : "Enduro Registration, Tours Bosnia, Motorcycle Offroad",
-
-    openGraph: {
-      title: locale === "de"
-        ? "Anmeldung - Enduro Drift Bosnien"
-        : "Registration - Enduro Drift Bosnia",
-
-      description: locale === "de"
-        ? "Melden Sie sich für unsere Enduro-Touren an und erleben Sie ein einzigartiges Offroad-Abenteuer!"
-        : "Sign up for our Enduro tours and experience an unforgettable offroad adventure!",
-
-      url: `https://endurodriftbosnien.com/${locale}/anmeldung`,
-      siteName: "Enduro Drift Bosnia",
-
-      images: [
-        {
-          url: "https://endurodriftbosnien.com/bg_anmeldung.webp",
-          width: 1200,
-          height: 630,
-          alt: locale === "de"
-            ? "Anmeldung - Enduro Drift Bosnien"
-            : "Registration - Enduro Drift Bosnia",
-        },
-      ],
-
-      type: "website",
-    },
-  };
-}
-
-
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 export default function AnmeldungPage() {
-  const [selectedTour, setSelectedTour] = useState<object>({ tour_number: "", tour_id: "", tour_in: "", tour_out: "" });
+  const [selectedTour, setSelectedTour] = useState<object>({
+    tour_number: "",
+    tour_id: "",
+    tour_in: "",
+    tour_out: "",
+  });
   const [selectedType, setSelectedType] = useState("");
   const [transport, setTransport] = useState<string | null>();
   const [email, setEmail] = useState<string>("");
@@ -77,16 +23,12 @@ export default function AnmeldungPage() {
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const dispatch = useDispatch<AppDispatch>();
   const tours = useSelector((state: RootState) => state.tours.tours);
-  const status = useSelector((state: RootState) => state.tours.status);
 
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const t = useTranslations();
-
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -181,19 +123,22 @@ export default function AnmeldungPage() {
                 required
               >
                 <option value="">{t("choose_tour_placeholder")}</option>
-                {tours.map((tour) => (
-                  <option
-                    key={tour._id}
-                    value={JSON.stringify({
-                      _id: tour._id,
-                      tour_number: tour.tour_number,
-                      tour_in: tour.checkIn_date,
-                      tour_out: tour.checkOut_date
-                    })}
-                  >
-                    Tour {tour.tour_number} - {tour.checkIn_date} bis {tour.checkOut_date}
-                  </option>
-                ))}
+                {tours
+                  .filter((tour) => tour.tour_space > 0)
+                  .map((tour) => (
+                    <option
+                      key={tour._id}
+                      value={JSON.stringify({
+                        _id: tour._id,
+                        tour_number: tour.tour_number,
+                        tour_in: tour.checkIn_date,
+                        tour_out: tour.checkOut_date,
+                      })}
+                    >
+                      Tour {tour.tour_number} - {tour.checkIn_date} bis{" "}
+                      {tour.checkOut_date}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -369,12 +314,13 @@ export default function AnmeldungPage() {
               {loading ? t("submit_loading") : t("submit_button")}
             </button>
 
-            {success && <p className="text-green-500">{t("success_message")}</p>}
+            {success && (
+              <p className="text-green-500">{t("success_message")}</p>
+            )}
             {error && <p className="text-red-500">{t("error_message")}</p>}
           </form>
         </div>
-
-      </div >
-    </section >
+      </div>
+    </section>
   );
 }

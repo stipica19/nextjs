@@ -5,14 +5,13 @@ const locations = [
   {
     id: 1,
     name: "Prokoško See",
-    description:
-      "best_p6", image: "/prokosko.webp",
+    description: "best_p6",
+    image: "/prokosko.webp",
   },
   {
     id: 2,
     name: "Vranica",
-    description:
-      "best_p7",
+    description: "best_p7",
     image: "/vranica.webp",
   },
   {
@@ -55,19 +54,16 @@ export default function AboutBosna() {
         {/* Opis */}
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p1")}
-
         </p>
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p2")}
         </p>
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p3")}
-
         </p>
 
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("best_p4")}
-
         </p>
 
         {/* Lokacija */}

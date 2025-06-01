@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectMongo from "@/lib/connect-db";
 import Anmeldung from "../../../models/Anmeldung";
 import { Resend } from "resend";
+import Tour from "@/models/Tour";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -32,6 +33,24 @@ export async function POST(req) {
     await connectMongo();
     const body = await req.json();
     console.log("----------------------------------->", body);
+
+    // 1. Pronađi turu po ID-u
+    const tour = await Tour.findById(body.tour_number._id);
+
+    if (!tour) {
+      return NextResponse.json(
+        { message: "Tour nicht gefunden." },
+        { status: 404 }
+      );
+    }
+
+    // 2. Provjeri da li ima dovoljno slobodnih mjesta
+    if (tour.tour_space < body.numPeople) {
+      return NextResponse.json(
+        { message: "Nicht genügend Plätze verfügbar." },
+        { status: 400 }
+      );
+    }
     const neueAnmeldung = new Anmeldung({
       tour_number: body.tour_number._id,
       tour_type: body.tour_type,
@@ -46,6 +65,10 @@ export async function POST(req) {
     });
 
     await neueAnmeldung.save();
+
+    // 4. Ažuriraj broj dostupnih mjesta u turi
+    tour.tour_space -= body.numPeople;
+    await tour.save();
 
     await resend.emails.send({
       from: `${body.fullName} <info@endurodriftbosnien.com>`,
@@ -158,7 +181,7 @@ export async function POST(req) {
             </div>
             <p style="font-size: 16px; color: #555; margin-top: 20px;">
                 Bei Fragen kontaktieren Sie uns unter: 
-                <a href="mailto:info@endurodriftbosnien.com" style="color: #007bff; text-decoration: none;">info@endurodriftbosnien.com</a>
+                <a href="mailto:endurodriftbosnien@gmail.com" style="color: #007bff; text-decoration: none;">endurodriftbosnien@gmail.com</a>
             </p>
 
             <div style="text-align: center; margin-top: 30px;">

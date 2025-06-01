@@ -12,20 +12,23 @@ interface FormData {
 }
 
 export default function Kontakt() {
-  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "" })
+  const [form, setForm] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const t = useTranslations();
-
-
 
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,9 +37,9 @@ export default function Kontakt() {
     setSuccess(null);
 
     try {
-      const { data } = await axios.post("/api/email", form,
-        { headers: { "Content-Type": "application/json" } },
-      );
+      const { data } = await axios.post("/api/email", form, {
+        headers: { "Content-Type": "application/json" },
+      });
       setSuccess("Die Nachricht wurde erfolgreich gesendet!");
       setForm({ name: "", email: "", message: "" });
     } catch (err: any) {
@@ -49,10 +52,7 @@ export default function Kontakt() {
   return (
     <div className="w-full min-h-screen bg-gray-900 text-white flex flex-col items-center">
       {/* Hero Sekcija */}
-      <div
-        className="relative w-full h-[20vh] flex items-center justify-center bg-cover bg-center"
-
-      >
+      <div className="relative w-full h-[20vh] flex items-center justify-center bg-cover bg-center">
         <div className="bg-opacity-70 p-6 rounded-lg text-center">
           <h1 className="text-4xl font-bold text-red-500">{t("kontakt_t")}</h1>
           <p className="text-lg ">{t("kontakt_p")}</p>
@@ -92,10 +92,8 @@ export default function Kontakt() {
             type="submit"
             className="bg-red-500 hover:bg-red-600 uppercase text-white font-bold py-3 rounded-md transition duration-300"
             disabled={loading}
-
           >
             {loading ? <>{t("gastebuch_b1")}</> : <>{t("gastebuch_b")}</>}
-
           </button>
         </form>
         {success && <p className="text-green-500">{success}</p>}
@@ -124,11 +122,17 @@ export default function Kontakt() {
           <a href="#" className="text-pink-500 hover:text-pink-400 transition">
             <FaInstagram />
           </a>
-          <a href="#" className="text-green-500 hover:text-green-400 transition">
+          <a
+            href="#"
+            className="text-green-500 hover:text-green-400 transition"
+          >
             <FaWhatsapp />
           </a>
         </div>
-        <p className="mt-4 text-gray-400">📍  Silvija Strahimira Kranjcevica, 70280 - Gornji Vakuf-Uskoplje, Bosnia and Hercegovina</p>
+        <p className="mt-4 text-gray-400">
+          📍 Silvija Strahimira Kranjcevica, 70280 - Gornji Vakuf-Uskoplje,
+          Bosnia and Hercegovina
+        </p>
       </div>
     </div>
   );

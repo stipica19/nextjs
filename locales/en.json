@@ -7,40 +7,43 @@
   "about_p3": "Natural beauties of mountain landscape and intact nature gives you heaven on Earth. We are located in central part of Bosnia and Herzegovinia. Size of Central Bosnia is over 3000 km2. Area is filled with streams, mountain rivers, lakes, spacious fields and forests. Gornji Vakuf - Uskoplje is small quiet town with about 10000 residents, 2,5 hours away from Sarajevo. Surrounded by mountains up to a 2100 m above sea level.",
   "about_p4": "All rides can be adapted to your wishes. We are here for you.",
   "toure_title": "Suggested Enduro Bosnia Tours",
-  "star":"Excellent Reviews",
-
+  "star": "Excellent Reviews",
+  "akcija": "📢 -10% DISCOUNT ON ALL TOURS IN APRIL! 🏍️🔥",
+  
   "prices_title": "Price:",
   "book_now": "Book now!",
-
   "tour1_title": "Tour 1",
   "tour1_description": "This tour is for experienced riders looking for a true adrenaline adventure.",
-  "tour1_priceOwnBike": "400€ (with your own motorcycle)",
+  "tour1_priceOwnBike": "440€ (with your own motorcycle)",
   "tour1_priceRentalBike": "750€ (with our motorcycle)",
   "tour1_detail1": "🏨 4 overnight stays, breakfast, guide",
   "tour1_detail2": "🍽️ Lunch: 12€ per day",
   "tour1_detail3": "🛏️ Single room: 15€ per day",
   "tour1_detail4": "🚗 Transport from and to the airport: 70€",
   "tour1_detail5": "❌ Not included: Dinner in the city",
+  "tour1_detail6": "3 days of riding",
 
   "tour2_title": "Tour 2",
   "tour2_description": "The perfect tour to explore Bosnia’s breathtaking landscapes.",
-  "tour2_priceOwnBike": "500€ (with your own motorcycle)",
+  "tour2_priceOwnBike": "560€ (with your own motorcycle)",
   "tour2_priceRentalBike": "860€ (with our motorcycle)",
   "tour2_detail1": "🏨 5 overnight stays, breakfast, guide",
   "tour2_detail2": "🍽️ Lunch: 12€ per day",
   "tour2_detail3": "🛏️ Single room: 15€ per day",
   "tour2_detail4": "🚗 Transport from and to the airport: 70€",
   "tour2_detail5": "❌ Not included: Dinner in the city",
+  "tour2_detail6": "4 days of riding",
 
   "tour3_title": "Tour 3",
   "tour3_description": "Perfect for beginners and riders who want to enjoy a relaxed tour.",
-  "tour3_priceOwnBike": "690€ (with your own motorcycle)",
+  "tour3_priceOwnBike": "700€ (with your own motorcycle)",
   "tour3_priceRentalBike": "1100€ (with our motorcycle)",
   "tour3_detail1": "🏨 7 overnight stays, breakfast, guide",
   "tour3_detail2": "🍽️ Lunch: 12€ per day",
   "tour3_detail3": "🛏️ Single room: 15€ per day",
   "tour3_detail4": "🚗 Transport from and to the airport: 70€",
   "tour3_detail5": "❌ Not included: Dinner in the city",
+  "tour3_detail6": "5 days of riding",
 
   "best_title": "THE BEST ENDURO TOURS IN BOSNIA AND HERZEGOVINA",
   "best_p1": "Enduro Drift is the leading company for enduro tours in Bosnia and Herzegovina because we offer high quality and first class service in the entire process of organizing your tour.",
@@ -105,9 +108,9 @@
   "success_message": "Your registration was successful!",
   "error_message": "There was an error with your registration.",
 
-"tour_guide": "Mladen Brnas (Pinky) - Head of the Guide Team",
-"tour_guide1": "The head of our team is Mladen Brnas, a highly experienced enduro rider and driving instructor at his own driving school. Mladen participates in numerous enduro competitions in Bosnia and Herzegovina, where he has achieved remarkable results. His performances in the enduro races in Visoko and Tomislavgrad were particularly impressive. He is extremely friendly and determined to provide our guests with the enjoyment of enduro riding.",
-"rule_title":"Rule",
+  "tour_guide": "Mladen Brnas (Pinky) - Head of the Guide Team",
+  "tour_guide1": "The head of our team is Mladen Brnas, a highly experienced enduro rider and driving instructor at his own driving school. Mladen participates in numerous enduro competitions in Bosnia and Herzegovina, where he has achieved remarkable results. His performances in the enduro races in Visoko and Tomislavgrad were particularly impressive. He is extremely friendly and determined to provide our guests with the enjoyment of enduro riding.",
+  "rule_title": "Rule",
   "rules": [
     "🏍️ Make sure your bike is ready for the tour",
     "🚧 Do not leave the trail",
@@ -156,5 +159,11 @@
   "seo_tour_title": "Tour Dates | Enduro Drift Bosnia",
 
   "seo_home_title": "Enduro Drift Bosnien - Offroad Motorcycle Adventures",
-  "seo_home_description": "Erleben Sie das ultimative Enduro-Abenteuer in den atemberaubenden Bergen von Bosnien und Herzegowina. Egal, ob Sie Anfänger oder erfahrener Fahrer sind – wir bieten unvergessliche Touren durch unberührte Natur und extreme Offroad-Strecken."
+  "seo_home_description": "Erleben Sie das ultimative Enduro-Abenteuer in den atemberaubenden Bergen von Bosnien und Herzegowina. Egal, ob Sie Anfänger oder erfahrener Fahrer sind – wir bieten unvergessliche Touren durch unberührte Natur und extreme Offroad-Strecken.",
+  "dario_t": "Dario Brnas - Guide for Beginners",
+  "dario_p": "Dario Brnas, although only 17 years old, is already a passionate enduro rider and guide for beginners. With his enthusiasm for off-road riding and his excellent knowledge of the trails, Dario helps those who are just entering the world of enduro riding. His patience, energy, and enthusiasm make him the perfect guide for beginners, providing them with safety and valuable tips every step of the way. Despite his young age, he already demonstrates exceptional skill and responsibility, ensuring that every rider fully enjoys their first enduro experience.",
+  "alen_t": "Anel Tihak - Pro Rider",
+  "alen_p": "Anel is an experienced pro rider, known for his incredible technique and courage on the most challenging enduro tracks. With years of experience and participation in numerous competitions, he has become a role model for many riders. His speed, precision, and ability to overcome obstacles make him one of the best in the team. In addition to his top riding skills, he is always ready to share tips and motivate others to push their own limits.",
+  "gallery_title": "Enduro Drift Bosnia Gallery",
+  "gallery_p": "Browse through exciting moments from our off-road motorcycle tours! From muddy trails to mountain peaks, this is the spirit of Enduro Drift Bosnia"
 }

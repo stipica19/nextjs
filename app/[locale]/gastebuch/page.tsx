@@ -21,8 +21,7 @@ export default function Gaestebuch() {
   const [loading, setLoading] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
 
-
-  // 📌 Dohvati komentare iz baze (API poziv)
+  //  Dohvati komentare iz baze (API poziv)
   useEffect(() => {
     async function fetchComments() {
       try {
@@ -38,7 +37,8 @@ export default function Gaestebuch() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.trim() === "" || email.trim() === "" || message.trim() === "") return;
+    if (name.trim() === "" || email.trim() === "" || message.trim() === "")
+      return;
     setLoading(true);
 
     const newComment: Comment = {
@@ -104,9 +104,7 @@ export default function Gaestebuch() {
         ></textarea>
         <button
           type="submit"
-
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 uppercase rounded-md transition duration-300"
-
           disabled={loading}
         >
           {loading ? <>{t("gastebuch_b1")}</> : <>{t("gastebuch_b")}</>}
@@ -117,17 +115,30 @@ export default function Gaestebuch() {
       <div className="w-full max-w-lg mt-8 space-y-4">
         {comments.slice(0, visibleCount).map((comment, index) => (
           <div key={index} className="bg-gray-800 p-4 rounded-lg shadow-lg">
-            <p className="text-lg font-semibold">{comment.name}  <span className="text-[12px]">{comment.email}</span></p>
-            <p className="text-gray-300">{new Date(comment.createdAt).toLocaleDateString()}</p>
+            <p className="text-lg font-semibold">
+              {comment.name}{" "}
+              <span className="text-[12px]">{comment.email}</span>
+            </p>
+            <p className="text-gray-300">
+              {new Date(comment.createdAt).toLocaleDateString()}
+            </p>
             <p className="text-xs text-gray-500 mt-2">{comment.message}</p>
           </div>
         ))}
       </div>
       {comments.length > 5 && (
         <button
-          onClick={() => setVisibleCount(visibleCount === 5 ? comments.length : 5)}
+          onClick={() =>
+            setVisibleCount(visibleCount === 5 ? comments.length : 5)
+          }
           className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-md transition duration-300"
-        >{visibleCount === 5 ? <>{t("gastebuch_b2")}</> : <>{t("gastebuch_b3")}</>}</button>
+        >
+          {visibleCount === 5 ? (
+            <>{t("gastebuch_b2")}</>
+          ) : (
+            <>{t("gastebuch_b3")}</>
+          )}
+        </button>
       )}
     </div>
   );
