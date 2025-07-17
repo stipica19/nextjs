@@ -65,7 +65,7 @@ const Navbar = () => {
         {navLinks?.map((link) =>
           link.subLinks ? (
             <li key={link.key} className="relative group">
-              <span className="text-gray-800 hover:text-black font-roboto font-medium cursor-pointer">
+              <span className="text-gray-800 hover:text-black font-roboto  font-medium cursor-pointer">
                 {link.label}
               </span>
               <ul className="absolute hidden group-hover:block bg-white shadow-md rounded mt-0 py-1 w-40 z-50">
@@ -77,7 +77,7 @@ const Navbar = () => {
                           handleLogout();
                           setMenuOpen(false);
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block w-full text-left px-4 py-2 uppercase text-sm text-gray-700 hover:bg-gray-100"
                       >
                         Logout
                       </button>
@@ -87,7 +87,7 @@ const Navbar = () => {
                       <Link
                         href={subLink.href || "#"}
                         onClick={() => setMenuOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm uppercase text-gray-700 hover:bg-gray-100"
                       >
                         {subLink.label}
                       </Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
             <li key={link.key}>
               <Link
                 href={link.href || "#"}
-                className="text-gray-800 hover:text-black font-roboto font-medium transition-all"
+                className="text-gray-800 hover:text-black uppercase font-roboto font-medium transition-all"
               >
                 {link.label}
               </Link>

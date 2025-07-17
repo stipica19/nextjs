@@ -20,11 +20,8 @@ export default function Motorcycles() {
   return (
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-6 lg:px-20 text-center">
-
         {/* Naslov */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">
-          MOTORCYCLES
-        </h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-6">MOTORCYCLES</h2>
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("moto_p1")}
         </p>
@@ -68,7 +65,9 @@ export default function Motorcycles() {
 
         {/* Oprema */}
         <div className="mt-4 p-2  text-left">
-          <h3 className="text-2xl text-center font-bold text-gray-900">🏍️{t("gang_title")}</h3>
+          <h3 className="text-2xl text-center font-bold text-gray-900">
+            🏍️{t("gang_title")}
+          </h3>
           <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
             {t("gang")}
           </p>
@@ -76,7 +75,7 @@ export default function Motorcycles() {
             {t("gang1")}
           </p>
           <ul className=" space-y-2  font-semibold text-left  max-w-[80%] mx-auto mt-6 text-gray-700">
-            <li>🪖  {t("gang2")}</li>
+            <li>🪖 {t("gang2")}</li>
             <li>🥾 {t("gang3")}</li>
             <li>🧤 {t("gang4")}</li>
             <li>🛡️ {t("gang5")}</li>
@@ -85,7 +84,6 @@ export default function Motorcycles() {
             {t("gang6")}
           </p>
         </div>
-
       </div>
     </section>
   );

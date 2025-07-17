@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:docker": "NODE_OPTIONS='--max-old-space-size=512' next build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
@@ -16,6 +17,7 @@
     "framer-motion": "^12.0.6",
     "jose": "^5.9.6",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.525.0",
     "mongoose": "^8.9.5",
     "next": "15.1.6",
     "next-cloudinary": "^6.16.0",
@@ -38,5 +40,13 @@
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "not IE 11",
+    "not dead"
+  ]
 }

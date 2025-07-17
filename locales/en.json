@@ -9,41 +9,56 @@
   "toure_title": "Suggested Enduro Bosnia Tours",
   "star": "Excellent Reviews",
   "akcija": "📢 -10% DISCOUNT ON ALL TOURS IN APRIL! 🏍️🔥",
-  
+  "tour_title1": "Choose Your <highlight>Adventure</highlight>",
+  "tour_p": "From beginner-friendly routes to extreme challenges – find the perfect tour for your skill level.",
+  "tour_nicht_sicher": "Not sure which tour is right for you?",
+  "tour_btn": "Feel free to contact us for a consultation",
+  "tour_Included": "Included",
+  "tour_nicht_included": "Not included",
+  "tour_extra": "Extra charges",
+
+  "tour_mit_eigenem_bike": "With your own motorcycle",
+  "tour_mit_unserem_bike": "With our motorcycle",
   "prices_title": "Price:",
   "book_now": "Book now!",
-  "tour1_title": "Tour 1",
+  "tour1_title": "Enduro Bosnien Tour 1",
   "tour1_description": "This tour is for experienced riders looking for a true adrenaline adventure.",
-  "tour1_priceOwnBike": "440€ (with your own motorcycle)",
-  "tour1_priceRentalBike": "750€ (with our motorcycle)",
+  "tour1_priceOwnBike": "440€",
+  "tour1_priceRentalBike": "750€",
   "tour1_detail1": "🏨 4 overnight stays, breakfast, guide",
   "tour1_detail2": "🍽️ Lunch: 12€ per day",
   "tour1_detail3": "🛏️ Single room: 15€ per day",
   "tour1_detail4": "🚗 Transport from and to the airport: 70€",
-  "tour1_detail5": "❌ Not included: Dinner in the city",
+  "tour1_detail5": " Not included: Dinner in the city",
   "tour1_detail6": "3 days of riding",
+  "tour1_dolazak":"Arrival : Saturday",
+  "tour1_odlazak":"Departure : Wednesday",
 
-  "tour2_title": "Tour 2",
+  "tour2_title": "Enduro  Bosnien Tour 2",
   "tour2_description": "The perfect tour to explore Bosnia’s breathtaking landscapes.",
-  "tour2_priceOwnBike": "560€ (with your own motorcycle)",
-  "tour2_priceRentalBike": "860€ (with our motorcycle)",
+  "tour2_priceOwnBike": "560€",
+  "tour2_priceRentalBike": "860€",
   "tour2_detail1": "🏨 5 overnight stays, breakfast, guide",
   "tour2_detail2": "🍽️ Lunch: 12€ per day",
   "tour2_detail3": "🛏️ Single room: 15€ per day",
   "tour2_detail4": "🚗 Transport from and to the airport: 70€",
   "tour2_detail5": "❌ Not included: Dinner in the city",
   "tour2_detail6": "4 days of riding",
+  "tour2_dolazak":"Arrival : Saturday",
+  "tour2_odlazak":"Departure : Friday",
 
-  "tour3_title": "Tour 3",
+  "tour3_title": "Enduro Bosnien Tour 3",
   "tour3_description": "Perfect for beginners and riders who want to enjoy a relaxed tour.",
-  "tour3_priceOwnBike": "700€ (with your own motorcycle)",
-  "tour3_priceRentalBike": "1100€ (with our motorcycle)",
+  "tour3_priceOwnBike": "700€",
+  "tour3_priceRentalBike": "1100€",
   "tour3_detail1": "🏨 7 overnight stays, breakfast, guide",
   "tour3_detail2": "🍽️ Lunch: 12€ per day",
   "tour3_detail3": "🛏️ Single room: 15€ per day",
   "tour3_detail4": "🚗 Transport from and to the airport: 70€",
   "tour3_detail5": "❌ Not included: Dinner in the city",
   "tour3_detail6": "5 days of riding",
+  "tour3_dolazak":"Arrival : Saturday",
+  "tour3_odlazak":"Departure : Saturday",
 
   "best_title": "THE BEST ENDURO TOURS IN BOSNIA AND HERZEGOVINA",
   "best_p1": "Enduro Drift is the leading company for enduro tours in Bosnia and Herzegovina because we offer high quality and first class service in the entire process of organizing your tour.",
@@ -165,5 +180,56 @@
   "alen_t": "Anel Tihak - Pro Rider",
   "alen_p": "Anel is an experienced pro rider, known for his incredible technique and courage on the most challenging enduro tracks. With years of experience and participation in numerous competitions, he has become a role model for many riders. His speed, precision, and ability to overcome obstacles make him one of the best in the team. In addition to his top riding skills, he is always ready to share tips and motivate others to push their own limits.",
   "gallery_title": "Enduro Drift Bosnia Gallery",
-  "gallery_p": "Browse through exciting moments from our off-road motorcycle tours! From muddy trails to mountain peaks, this is the spirit of Enduro Drift Bosnia"
+  "gallery_p": "Browse through exciting moments from our off-road motorcycle tours! From muddy trails to mountain peaks, this is the spirit of Enduro Drift Bosnia",
+
+  "whyChooseUs": {
+    "title": "Why choose <highlight>us</highlight>?",
+    "subtitle": "Enduro Drift is the leading company for enduro tours in Bosnia and Herzegovina",
+    "features": [
+      {
+        "title": "Premium Motorcycles",
+        "description": "Latest BETA models 2023 – BETA 300 RR and BETA 300 XTRAINER ready for every challenge"
+      },
+      {
+        "title": "Unique Location",
+        "description": "Gornji Vakuf - Uskoplje, surrounded by mountains up to 2100m high and over 3000 km² of terrain"
+      },
+      {
+        "title": "All-Inclusive Package",
+        "description": "Free equipment, accommodation, expert guides, and full support throughout the tour"
+      },
+      {
+        "title": "Proven Quality",
+        "description": "203 satisfied guests, 5-star rating and years of experience in tour organization"
+      },
+      {
+        "title": "Untouched Nature",
+        "description": "Prokoško Lake, Vranica Mountain, Ramsko Lake, and many other natural beauties"
+      },
+      {
+        "title": "For All Levels",
+        "description": "From beginners to experienced riders – we adapt the tours to your level of knowledge and experience"
+      }
+    ]
+  },
+  "locationSection": {
+    "title": "Our <highlight>Location</highlight>",
+    "description": "Gornji Vakuf - Uskoplje is located in the central part of Bosnia and Herzegovina, just 2.5 hours' drive from Sarajevo. Surrounded by mountains up to 2100m high.",
+    "points": [
+      "2.5 hours from Sarajevo",
+      "3000+ km² of terrain to explore",
+      "Mountains up to 2100m high",
+      "Untouched nature and fresh air"
+    ]
+  },
+   "enduroOptions": {
+    "hard": {
+      "title": "Hard Enduro",
+      "description": "Challenging terrain, technical trails, and steep climbs — covering 30–40 km per day"
+    },
+    "medium": {
+      "title": "Medium Enduro",
+      "description": "Longer, scenic rides with mixed difficulty — covering 80–100 km per day"
+    }
+  }
 }

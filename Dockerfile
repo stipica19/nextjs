@@ -1,42 +1,61 @@
-# 1️⃣ Koristimo zvanični Node.js image baziran na Alpine Linuxu
-FROM node:22-alpine AS builder
+# Multi-stage build za Next.js 15+ - optimizovano za local build
+FROM node:22-alpine AS base
 
-# 2️⃣ Postavljamo radni direktorijum unutar kontejnera
+# Instaliramo potrebne pakete
+RUN apk add --no-cache libc6-compat
+
+# Postavljamo radni direktorijum
 WORKDIR /app
 
-# 3️⃣ Kopiramo package.json i package-lock.json
-COPY package.json package-lock.json ./
+# Dependencies faza
+FROM base AS deps
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev --frozen-lockfile
 
-# 4️⃣ Instaliramo samo production dependencije
-RUN npm ci --omit=dev
+# Builder faza
+FROM base AS builder
+COPY package.json package-lock.json* ./
+RUN npm ci --frozen-lockfile
 
-# 5️⃣ Kopiramo sve ostale fajlove u kontejner
 COPY . .
 
+# Optimizacija za build - može biti više memorije lokalno
+ARG NODE_OPTIONS="--max-old-space-size=512"
+ENV NODE_OPTIONS=$NODE_OPTIONS
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# 6️⃣ Gradimo Next.js aplikaciju
+# Gradimo aplikaciju sa standalone output
 RUN npm run build
 
-# 7️⃣ Novi image samo sa potrebnim fajlovima
+# Production faza - minimalna veličina za server
 FROM node:22-alpine AS runner
 WORKDIR /app
 
-# 8️⃣ Kopiramo package.json i package-lock.json iz `builder` faze
-COPY --from=builder /app/package.json /app/package-lock.json ./
+# Kreiramo non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# 9️⃣ Instaliramo production zavisnosti ponovo u "runner" fazi
-RUN npm ci --omit=dev
+# Kopiramo production dependencies
+COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
 
-# 🔟 Kopiramo samo potrebne fajlove za produkciju
-COPY --from=builder /app/.next /app/.next
-COPY --from=builder /app/public /app/public
+# Kopiramo build rezultate
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
 
-# 1️⃣1️⃣ Podešavamo varijable za optimizaciju memorije
+# Prebacujemo se na non-root user
+USER nextjs
+
+# Environment varijable za produkciju na serveru
 ENV NODE_ENV=production
-ENV NODE_OPTIONS="--max-old-space-size=256"
+ENV NODE_OPTIONS="--max-old-space-size=384"
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# 1️⃣2️⃣ Expose port 3000
 EXPOSE 3000
 
-# 1️⃣3️⃣ Pokrećemo aplikaciju pomoću `next start`
-CMD ["node", "./node_modules/next/dist/bin/next", "start", "-p", "3000"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"
+
+# Pokretanje aplikacije
+CMD ["./node_modules/.bin/next", "start"]

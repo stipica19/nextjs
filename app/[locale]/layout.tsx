@@ -28,6 +28,9 @@ export async function generateMetadata({
       locale === "de"
         ? "Enduro Touren, Motorrad, Offroad, Bosnien, Abenteuer,Enduro touren Bosnien,enduro balkan, ktm,Enduro Croatia"
         : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
+    viewport: "width=device-width, initial-scale=1",
+    robots: "index, follow",
+    authors: [{ name: "Enduro Drift Bosnien" }],
     openGraph: {
       title:
         locale === "de"
@@ -76,7 +79,9 @@ export default async function RootLayout({
         <Providers locale={locale} messages={messages}>
           <div className="mx-auto screen">
             <Navbar />
-            <main className="relative overflow-hidden">{children}</main>
+            <main className="relative overflow-hidden min-h-screen">
+              {children}
+            </main>
             <Footer />
             <ScrollToTopButton />
           </div>
