@@ -28,6 +28,11 @@ export const getNavLinks = (locale: string, user?: any): NavLink[] => {
       label: locale === "de" ? "REISEFÜHRER" : "TOUR GUIDE",
     },
     {
+      href: `/${locale}/blog`,
+      key: "blog",
+      label: locale === "de" ? "blog" : "blog",
+    },
+    {
       href: `/${locale}/gastebuch`,
       key: "gästebuch",
       label: locale === "de" ? "GÄSTEBUCH" : "GUESTBOOK",

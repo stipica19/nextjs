@@ -8,7 +8,7 @@
   "about_p4": "All rides can be adapted to your wishes. We are here for you.",
   "toure_title": "Suggested Enduro Bosnia Tours",
   "star": "Excellent Reviews",
-  "akcija": "📢 -10% DISCOUNT ON ALL TOURS IN APRIL! 🏍️🔥",
+  "akcija": "📢 SEASON 2026: MORE TOURS, MORE ADVENTURE – BOOK NOW! 🔥",
   "tour_title1": "Choose Your <highlight>Adventure</highlight>",
   "tour_p": "From beginner-friendly routes to extreme challenges – find the perfect tour for your skill level.",
   "tour_nicht_sicher": "Not sure which tour is right for you?",
@@ -29,7 +29,7 @@
   "tour1_detail2": "🍽️ Lunch: 12€ per day",
   "tour1_detail3": "🛏️ Single room: 15€ per day",
   "tour1_detail4": "🚗 Transport from and to the airport: 70€",
-  "tour1_detail5": " Not included: Dinner in the city",
+  "tour1_detail5": "Dinner in the city",
   "tour1_detail6": "3 days of riding",
   "tour1_dolazak":"Arrival : Saturday",
   "tour1_odlazak":"Departure : Wednesday",
@@ -42,7 +42,7 @@
   "tour2_detail2": "🍽️ Lunch: 12€ per day",
   "tour2_detail3": "🛏️ Single room: 15€ per day",
   "tour2_detail4": "🚗 Transport from and to the airport: 70€",
-  "tour2_detail5": "❌ Not included: Dinner in the city",
+  "tour2_detail5": "Dinner in the city",
   "tour2_detail6": "4 days of riding",
   "tour2_dolazak":"Arrival : Saturday",
   "tour2_odlazak":"Departure : Friday",
@@ -55,7 +55,9 @@
   "tour3_detail2": "🍽️ Lunch: 12€ per day",
   "tour3_detail3": "🛏️ Single room: 15€ per day",
   "tour3_detail4": "🚗 Transport from and to the airport: 70€",
-  "tour3_detail5": "❌ Not included: Dinner in the city",
+  "tour3_detail5": "Dinner in the city",
+    
+   "vinjete":"Vignette: €25/month (own motorcycle)",
   "tour3_detail6": "5 days of riding",
   "tour3_dolazak":"Arrival : Saturday",
   "tour3_odlazak":"Departure : Saturday",
@@ -231,5 +233,10 @@
       "title": "Medium Enduro",
       "description": "Longer, scenic rides with mixed difficulty — covering 80–100 km per day"
     }
-  }
+  },
+   "blog_title": "Enduro Drift Bosnien Blog",
+   "blog_p": "Everything you need for the perfect enduro holiday in Bosnia and Herzegovina — preparation, routes, gear, accommodation and safety.",
+   "blog_kontakt": "Ready for an enduro adventure in Bosnia?",
+   "blog_read_more": "Contact us and we’ll create a tour tailored to your level and wishes.",
+   "blog_read":"More reading"
 }

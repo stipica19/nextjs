@@ -13,14 +13,98 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang="de">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Primary Meta Tags */}
+        <title>
+          Enduro Tours Bosnien | Abenteuer Enduro Touren & Motorradreisen
+        </title>
+        <meta
+          name="title"
+          content="Enduro Tours Bosnien | Abenteuer Enduro Touren & Motorradreisen"
+        />
+        <meta
+          name="description"
+          content="Erleben Sie unvergessliche Enduro Touren in Bosnien! Geführte Motorradreisen durch die wunderschönen Berge der Balkanhalbinsel. Jetzt buchen!"
+        />
+        <meta
+          name="keywords"
+          content="enduro tours bosnien, motorradreisen balkan, enduro touren, abenteuer motorrad, bosnia enduro, geführte motorradtouren, offroad bosnien"
+        />
         <meta name="author" content="Enduro Drift Bosnien" />
-        <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#000000" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+        <meta name="language" content="de" />
+        <meta name="geo.region" content="BA" />
+        <meta name="geo.country" content="Bosnia and Herzegovina" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.endurodriftbosnien.com" />
+
+        {/* Favicon */}
         <link rel="icon" href="/logo.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <meta name="theme-color" content="#000000" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Enduro Drift Bosnien" />
+        <meta
+          property="og:title"
+          content="Enduro Tours Bosnien | Abenteuer Enduro Touren & Motorradreisen"
+        />
+        <meta
+          property="og:description"
+          content="Erleben Sie unvergessliche Enduro Touren in Bosnien! Geführte Motorradreisen durch die wunderschönen Berge der Balkanhalbinsel. Jetzt buchen!"
+        />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/stipica/image/upload/c_limit,w_2048/f_auto/q_auto/v1/Your_paragraph_text_1_jabt8n?_a=BAVAZGBz0"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta
+          property="og:image:alt"
+          content="Enduro Tours in den Bergen von Bosnien"
+        />
+        <meta property="og:url" content="https://www.endurodriftbosnien.com" />
+        <meta property="og:locale" content="de_DE" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Enduro Tours Bosnien | Abenteuer Enduro Touren & Motorradreisen"
+        />
+        <meta
+          name="twitter:description"
+          content="Erleben Sie unvergessliche Enduro Touren in Bosnien! Geführte Motorradreisen durch die wunderschönen Berge der Balkanhalbinsel."
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/stipica/image/upload/c_limit,w_2048/f_auto/q_auto/v1/Your_paragraph_text_1_jabt8n?_a=BAVAZGBz0"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Enduro Tours in den Bergen von Bosnien"
+        />
+
+        {/* Additional SEO */}
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
-      <body className={`${roboto.className} bg-white text-black`}>
+      <body className={`${roboto.className} bg-white text-black`} lang="de">
         <GoogleAnalytics />
         {children}
       </body>

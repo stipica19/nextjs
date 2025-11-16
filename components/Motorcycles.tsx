@@ -21,7 +21,7 @@ export default function Motorcycles() {
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-6 lg:px-20 text-center">
         {/* Naslov */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">MOTORCYCLES</h2>
+        <h3 className="text-4xl font-bold text-gray-900 mb-6">MOTORCYCLES</h3>
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("moto_p1")}
         </p>

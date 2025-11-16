@@ -10,7 +10,7 @@
   "star": "Ausgezeichnete Bewertungen",
   "prices_title": "Preis:",
   "book_now": "Buche jetzt!",
-  "akcija": "📢 -10% RABATT AUF ALLE TOUREN IM APRIL! 🏍️🔥",
+  "akcija": "📢 SAISON 2026: MEHR TOUREN, MEHR ABENTEUER – JETZT BUCHEN! 🏍️🔥",
   "tour_title1": "Wählen Sie Ihr <highlight>Abenteuer</highlight>",
   "tour_p": "Von anfängerfreundlichen Routen bis hin zu extremen Herausforderungen - finden Sie die perfekte Tour für Ihr Niveau",
   "tour_nicht_sicher": "Nicht sicher, welche Tour für Sie geeignet ist?",
@@ -29,7 +29,7 @@
   "tour1_detail2": "🍽️ Mittagessen: 12€ pro Tag",
   "tour1_detail3": "🛏️ Einzelzimmer: 15€ pro Tag",
   "tour1_detail4": "🚗 Transport vom Flughafen und zurück: 70€",
-  "tour1_detail5": "Nicht inbegriffen: Abendessen in der Stadt",
+  "tour1_detail5": "Abendessen in der Stadt",
   "tour1_detail6": "🏍️ 3 Tage Fahrt",
   "tour1_dolazak":"Anreise : Samstag",
   "tour1_odlazak":"Abreise : Mittwoch",
@@ -42,7 +42,8 @@
   "tour2_detail2": "🍽️ Mittagessen: 12€ pro Tag",
   "tour2_detail3": "🛏️ Einzelzimmer: 15€ pro Tag",
   "tour2_detail4": "🚗 Transport vom Flughafen und zurück: 70€",
-  "tour2_detail5": "❌ Nicht inbegriffen: Abendessen in der Stadt",
+  "tour2_detail5": " Abendessen in der Stadt",
+  
   "tour2_detail6": "🏍️ 4 Tage Fahrt",
   "tour2_dolazak":"Anreise: Samstag",
   "tour2_odlazak":"Abreise : Freitag",
@@ -55,7 +56,8 @@
   "tour3_detail2": "🍽️ Mittagessen: 12€ pro Tag",
   "tour3_detail3": "🛏️ Einzelzimmer: 15€ pro Tag",
   "tour3_detail4": "🚗 Transport vom Flughafen und zurück: 70€",
-  "tour3_detail5": "❌ Nicht inbegriffen: Abendessen in der Stadt",
+  "tour3_detail5": "Abendessen in der Stadt",
+  "vinjete":"Vignette: 25 €/Monat (eigenes Motorrad)",
   "tour3_detail6": "🏍️ 5 Tage Fahrt",
   "tour3_dolazak":"Anreise: Samstag",
   "tour3_odlazak":"Abreise : Samstag",
@@ -248,5 +250,10 @@
       "title": "Medium Enduro",
       "description": "Längere, landschaftlich reizvolle Strecken mit gemischtem Schwierigkeitsgrad – 80–100 km pro Tag"
     }
-  }
+  },
+  "blog_title": "Enduro Drift Bosnien Blog",
+  "blog_p": "Alles, was du für den perfekten Enduro-Urlaub in Bosnien und Herzegowina brauchst — Vorbereitung, Routen, Ausrüstung, Unterkunft und Sicherheit.",
+    "blog_kontakt": "Bereit für ein Enduro-Abenteuer in Bosnien?",
+   "blog_read_more": "Kontaktiere uns und wir stellen eine Tour zusammen, die deinem Niveau und deinen Wünschen entspricht.",
+   "blog_read":"Mehr lesen"
 }

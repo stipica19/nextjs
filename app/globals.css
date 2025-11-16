@@ -18,7 +18,7 @@ body {
 
 @layer utilities {
   .btn_red {
-    @apply border border-red-500 bg-red-500 px-8 py-5 text-white;
+    @apply border border-red-500 bg-red-600 px-8 py-5 text-white tracking-widest;
   }
 
   .max-container {

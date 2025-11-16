@@ -18,15 +18,15 @@ export async function generateMetadata({
   return {
     title:
       locale === "de"
-        ? "Enduro Touren in Bosnien | Enduro Drift Bosnien - Entdecken Sie das Abenteuer!"
-        : "Enduro Tours in Bosnia | Enduro Drift Bosnia - Discover the Adventure!",
+        ? "Enduro Drift Bosnien - Enduro Touren & Abenteuer"
+        : "Enduro Drift Bosnia - Discover the Adventure!",
     description:
       locale === "de"
-        ? "Fordern Sie sich selbst heraus zu einem unvergesslichen Enduro-Abenteuer durch die wunderschönen bosnischen Berge mit Enduro Bosnien Tours."
+        ? "Enduro Tour in Bosnien - erleben Sie ein unvergessliches Abenteuer in den wunderschönen Bergen mit Enduro Bosnien Tours."
         : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
     keywords:
       locale === "de"
-        ? "Enduro Touren, Motorrad, Offroad, Bosnien, Abenteuer,Enduro touren Bosnien,enduro balkan, ktm,Enduro Croatia"
+        ? "Enduro Tour Bosnien, Enduro Reisen Bosnien, Enduro Urlaub Bosnien, Enduro Abenteuer Bosnien, Enduro Touren Balkan, Offroad Motorradtour Bosnien, geführte Enduro Touren Bosnien, Enduro Motorradreise Bosnien Berge, Enduro Urlaub Balkan, Enduro Bosnien Tours"
         : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
@@ -38,7 +38,7 @@ export async function generateMetadata({
           : "Enduro Drift Bosnia - Offroad Tours",
       description:
         locale === "de"
-          ? "Erleben Sie die besten Enduro-Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
+          ? "Erleben Sie die besten Enduro Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
           : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
       url: `https://www.endurodriftbosnien.com/de`,
       siteName: "Enduro Drift Bosnien",
@@ -82,7 +82,7 @@ export default async function RootLayout({
             <main className="relative overflow-hidden min-h-screen">
               {children}
             </main>
-            <Footer />
+            <Footer locale={locale} />
             <ScrollToTopButton />
           </div>
         </Providers>

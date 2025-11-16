@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store"; // Adjusted the import path to use an absolute path based on Next.js alias
 import { loadUser, logout } from "@/store/userSlice";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -119,20 +120,19 @@ const Navbar = () => {
               language === lang.code ? "bg-gray-200" : "bg-gray-100"
             }`}
           >
-            <Image src={lang?.icon} alt={lang.label} width={24} height={24} />
+            <Image
+              src={lang?.icon}
+              alt="language icon"
+              width={24}
+              height={24}
+            />
           </button>
         ))}
       </div>
 
       {/* Mobile Menu Button */}
       <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden">
-        <Image
-          src="/menu.png"
-          alt="Menu"
-          width={32}
-          height={32}
-          className="cursor-pointer"
-        />
+        <Menu width={32} height={32} className="cursor-pointer" />
       </button>
 
       {/* Mobile Menu */}
@@ -141,11 +141,6 @@ const Navbar = () => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
       >
-        <button
-          onClick={() => setMenuOpen(false)}
-          className="absolute top-5 right-5"
-        ></button>
-
         <ul className="flex flex-col items-start mt-16 px-6 space-y-4">
           {navLinks?.map((link) =>
             link.subLinks ? (
@@ -215,11 +210,10 @@ const Navbar = () => {
               >
                 <Image
                   src={lang?.icon}
-                  alt={lang.label}
+                  alt="language icon"
                   width={24}
                   height={24}
                 />
-                <span>{lang.label.toUpperCase()}</span>
               </button>
             ))}
           </div>

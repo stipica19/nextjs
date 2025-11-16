@@ -9,9 +9,9 @@ const About = () => {
       <div className="container mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
         {/* Lijeva strana - Tekst */}
         <div className="lg:w-1/2 flex flex-col justify-center animate-fadeIn">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-snug">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-snug">
             🌍 {t("about_title")}
-          </h1>
+          </h2>
           <p className="text-lg font-medium text-gray-700 mb-6">
             👋 {t("about_p1")}
           </p>

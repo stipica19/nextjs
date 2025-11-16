@@ -25,6 +25,7 @@ const Tour = () => {
         "tour1_detail5",
         "tour1_dolazak",
         "tour1_odlazak",
+        "vinjete",
       ],
     },
     {
@@ -44,6 +45,7 @@ const Tour = () => {
         "tour2_detail5",
         "tour2_dolazak",
         "tour2_odlazak",
+        "vinjete",
       ],
     },
     {
@@ -63,6 +65,7 @@ const Tour = () => {
         "tour3_detail5",
         "tour3_dolazak",
         "tour3_odlazak",
+        "vinjete",
       ],
     },
   ];
@@ -237,6 +240,10 @@ const Tour = () => {
                         {t(item)}
                       </li>
                     ))}
+                    <li className="flex items-center gap-2 text-gray-400 text-sm">
+                      <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                      {t("vinjete")}
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -251,9 +258,8 @@ const Tour = () => {
                 <div className="pt-4">
                   <Link href={`/${locale}/anmeldung`} className="block">
                     <button className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                      <span className="flex items-center justify-center gap-2">
+                      <span className="flex items-center tracking-widest justify-center gap-2">
                         {t("dugme")}
-                        <span className="text-xl">🚀</span>
                       </span>
                     </button>
                   </Link>

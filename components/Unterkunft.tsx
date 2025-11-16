@@ -6,11 +6,11 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { useTranslations } from "next-intl";
 
 const images = [
-  "/hotel/hotel0.jpeg",
-  "/hotel/hotel00.jpeg",
-  "/hotel/hotel1.jpeg",
-  "/hotel/hotel4.jpeg",
-  "/hotel/hotel5.jpeg",
+  "/hotel/hotel0.webp",
+  "/hotel/hotel00.webp",
+  "/hotel/hotel1.webp",
+  "/hotel/hotel4.webp",
+  "/hotel/hotel5.webp",
 ];
 
 export default function Unterkunft() {
@@ -20,10 +20,10 @@ export default function Unterkunft() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-6 lg:px-20 text-center">
         {/* Naslov */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-6 relative inline-block">
+        <h3 className="text-4xl font-bold text-gray-900 mb-6 relative inline-block">
           {t("hotel_title")}
           <span className="absolute bottom-0 left-0 w-16 h-1 bg-red-600"></span>
-        </h2>
+        </h3>
         <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
           {t("hotel")}
         </p>
