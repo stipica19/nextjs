@@ -1,14 +1,24 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
-interface Params {
-  locale: "de" | "en";
+type Params = { locale: "de" | "en" };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    alternates: {
+      canonical: `/${locale}/privacy`,
+    },
+    openGraph: {
+      url: `https://endurodriftbosnien.com/${locale}/privacy`,
+    },
+  };
 }
-
-export const metadata = {
-  title: "Privacy / Datenschutz | Enduro Drift Bosnien",
-  description: "Privacy Policy / Datenschutzerklärung für Enduro Drift Bosnien",
-  robots: { index: true, follow: true },
-};
 
 export default async function PrivacyPage({
   params,
@@ -229,6 +239,63 @@ export default async function PrivacyPage({
             {isDe
               ? "Richten Sie Ihre Anfrage bitte an: endurodriftbosnien@gmail.com – Betreff: Datenschutz"
               : "Please send requests to: endurodriftbosnien@gmail.com – Subject: Privacy"}
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold mb-2">
+            {isDe ? "11. Google reCAPTCHA" : "11. Google reCAPTCHA"}
+          </h2>
+          <p className="text-neutral-700">
+            {isDe ? (
+              <>
+                Diese Website ist durch reCAPTCHA geschützt und es gelten die
+                Datenschutzerklärung und Nutzungsbedingungen von Google.{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  className="text-amber-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Datenschutzrichtlinie
+                </a>{" "}
+                und{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  className="text-amber-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Nutzungsbedingungen
+                </a>{" "}
+                finden Sie hier. Wir verwenden reCAPTCHA ausschließlich zur
+                Abwehr von Spam und Missbrauch (z. B. bei Kontaktformularen).
+              </>
+            ) : (
+              <>
+                This site is protected by reCAPTCHA and the Google Privacy
+                Policy and Terms of Service apply. See the{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  className="text-amber-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  className="text-amber-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms of Service
+                </a>
+                . We use reCAPTCHA solely to prevent spam and abuse (e.g., on
+                contact forms).
+              </>
+            )}
           </p>
         </div>
       </section>

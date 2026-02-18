@@ -49,9 +49,9 @@ const Navbar = () => {
   }, [dispatch]);
 
   return (
-    <nav className="flex justify-between items-center max-container padding-container relative z-30 py-5">
+    <nav className="flex justify-between items-center max-container padding-container relative z-30 py-3">
       {/* Logo - Navbar */}
-      <Link href="/">
+      <Link href={`/${locale}`}>
         <Image
           src="/logo.png"
           alt="Enduro Drift Bosnien Logo"
@@ -93,7 +93,7 @@ const Navbar = () => {
                         {subLink.label}
                       </Link>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
             </li>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 {link.label}
               </Link>
             </li>
-          )
+          ),
         )}
       </ul>
 
@@ -148,7 +148,7 @@ const Navbar = () => {
                 <button
                   onClick={() =>
                     setOpenDropdownKey((prevKey) =>
-                      prevKey === link.key ? null : link.key
+                      prevKey === link.key ? null : link.key,
                     )
                   }
                   className="text-gray-700 text-lg font-medium block py-2"
@@ -179,7 +179,7 @@ const Navbar = () => {
                           {subLink.label}
                         </Link>
                       </li>
-                    )
+                    ),
                   )}
               </div>
             ) : (
@@ -192,7 +192,7 @@ const Navbar = () => {
                   {link.label.toUpperCase()}
                 </Link>
               </li>
-            )
+            ),
           )}
         </ul>
 

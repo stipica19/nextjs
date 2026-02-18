@@ -23,6 +23,7 @@ const Tour = () => {
         "tour1_detail3",
         "tour1_detail4",
         "tour1_detail5",
+
         "tour1_dolazak",
         "tour1_odlazak",
         "vinjete",
@@ -39,6 +40,7 @@ const Tour = () => {
       details: [
         "tour2_detail6",
         "tour2_detail1",
+
         "tour2_detail2",
         "tour2_detail3",
         "tour2_detail4",
@@ -97,7 +99,10 @@ const Tour = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-black relative overflow-hidden">
+    <section
+      id="tours"
+      className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-black relative overflow-hidden"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5"></div>
 

@@ -7,6 +7,11 @@ const roboto = Roboto({
   weight: ["400", "500", "700"],
   display: "swap",
 });
+
+export const metadata = {
+  metadataBase: new URL("https://endurodriftbosnien.com"),
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -20,7 +25,7 @@ export default function RootLayout({
 
         {/* Primary Meta Tags */}
         <title>
-          Enduro Tours Bosnien | Abenteuer Enduro Touren & Motorradreisen
+          Enduro Touren in Bosnien - Abenteuer Enduro Urlaub & Motorradreisen
         </title>
         <meta
           name="title"
@@ -44,7 +49,7 @@ export default function RootLayout({
         <meta name="geo.country" content="Bosnia and Herzegovina" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://www.endurodriftbosnien.com" />
+        <link rel="canonical" href="https://endurodriftbosnien.com" />
 
         {/* Favicon */}
         <link rel="icon" href="/logo.png" sizes="32x32" />
@@ -73,7 +78,7 @@ export default function RootLayout({
           property="og:image:alt"
           content="Enduro Tours in den Bergen von Bosnien"
         />
-        <meta property="og:url" content="https://www.endurodriftbosnien.com" />
+        <meta property="og:url" content="https://endurodriftbosnien.com" />
         <meta property="og:locale" content="de_DE" />
 
         {/* Twitter Card */}
@@ -103,9 +108,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <GoogleAnalytics />
       </head>
       <body className={`${roboto.className} bg-white text-black`} lang="de">
-        <GoogleAnalytics />
         {children}
       </body>
     </html>

@@ -2,34 +2,55 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts } from "@/lib/posts";
 import { getTranslations } from "next-intl/server";
-
-export const metadata = {
-  title: "Enduro Blog | Enduro Drift Bosnien",
-  description: "Savjeti, iskustva i vodiči za Enduro ture u Bosni.",
-};
+import type { Metadata } from "next";
 
 type Params = { locale: "de" | "en" };
+// Explicit types for posts returned by getAllPosts to satisfy TypeScript
+type Frontmatter = {
+  title: string;
+  description?: string;
+  cover?: string;
+  date?: string | number;
+  tags?: string[];
+};
+
+type Post = {
+  slug: string;
+  frontmatter: Frontmatter;
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isDe = locale === "de";
+
+  return {
+    title: isDe
+      ? "Enduro Blog | Enduro Drift Bosnien"
+      : "Enduro Blog | Enduro Drift Bosnia",
+    description: isDe
+      ? "Tipps, Erfahrungen und Guides für Enduro-Touren in Bosnien."
+      : "Tips, experiences and guides for Enduro tours in Bosnia.",
+    alternates: {
+      canonical: `/${locale}/blog`,
+    },
+    openGraph: {
+      url: `https://endurodriftbosnien.com/${locale}/blog`,
+    },
+  };
+}
 
 export default async function BlogIndex({
   params,
 }: {
   params: Promise<Params>;
 }) {
-  const { locale } = await params; // ← VAŽNO: awaitaj params jer je Promise u tvom tipu
-  type Post = {
-    slug: string;
-    frontmatter: {
-      title: string;
-      date?: string;
-      description?: string;
-      cover?: string;
-      tags?: string[];
-      videoId?: string;
-    };
-  };
+  const { locale } = await params;
 
   const posts: Post[] = getAllPosts(locale);
-
   const t = await getTranslations({ locale, namespace: "" });
 
   return (

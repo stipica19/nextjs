@@ -3,44 +3,58 @@ import "../globals.css";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Providers from "../providers";
+import OrganizationJsonLd from "@/components/OrganizationJsonLd";
 
 import { routing } from "@/i18n/routing";
 import { getMessages } from "next-intl/server";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
-}) {
-  const { locale } = await Promise.resolve(params);
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const title =
+    locale === "de"
+      ? "Enduro Touren in Bosnien - Enduro Urlaub | Enduro Drift Bosnien"
+      : "Enduro Tours in Bosnia - Adventure Enduro Trips | Enduro Drift Bosnien";
+
+  const description =
+    locale === "de"
+      ? "Enduro Tour in Bosnien - erleben Sie ein unvergessliches Abenteuer in den wunderschönen Bergen mit Enduro Bosnien Tours."
+      : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!";
 
   return {
-    title:
-      locale === "de"
-        ? "Enduro Drift Bosnien - Enduro Touren & Abenteuer"
-        : "Enduro Drift Bosnia - Discover the Adventure!",
-    description:
-      locale === "de"
-        ? "Enduro Tour in Bosnien - erleben Sie ein unvergessliches Abenteuer in den wunderschönen Bergen mit Enduro Bosnien Tours."
-        : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
+    metadataBase: new URL("https://endurodriftbosnien.com"),
+    title,
+    description,
     keywords:
       locale === "de"
         ? "Enduro Tour Bosnien, Enduro Reisen Bosnien, Enduro Urlaub Bosnien, Enduro Abenteuer Bosnien, Enduro Touren Balkan, Offroad Motorradtour Bosnien, geführte Enduro Touren Bosnien, Enduro Motorradreise Bosnien Berge, Enduro Urlaub Balkan, Enduro Bosnien Tours"
         : "Enduro Tours, Motorcycle, Offroad, Bosnia, Adventure",
-    viewport: "width=device-width, initial-scale=1",
-    robots: "index, follow",
+    robots: { index: true, follow: true },
     authors: [{ name: "Enduro Drift Bosnien" }],
+
+    // ✅ canonical za locale root (/de ili /en)
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        de: "/de",
+        en: "/en",
+        "x-default": "/",
+      },
+    },
+
     openGraph: {
       title:
         locale === "de"
           ? "Enduro Drift Bosnien - Offroad Touren"
           : "Enduro Drift Bosnia - Offroad Tours",
-      description:
-        locale === "de"
-          ? "Erleben Sie die besten Enduro Touren in Bosnien und genießen Sie ein unvergessliches Abenteuer!"
-          : "Experience the best Enduro tours in Bosnia and enjoy an unforgettable adventure!",
-      url: `https://www.endurodriftbosnien.com/de`,
+      description,
+      // ✅ non-www + dinamički locale
+      url: `https://endurodriftbosnien.com/${locale}`,
       siteName: "Enduro Drift Bosnien",
       images: [
         {
@@ -54,6 +68,12 @@ export async function generateMetadata({
     },
   };
 }
+
+// Use Next.js viewport export instead of metadata.viewport
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -77,6 +97,8 @@ export default async function RootLayout({
     <html lang={locale}>
       <body>
         <Providers locale={locale} messages={messages}>
+          {/* JSON-LD for Organization */}
+          <OrganizationJsonLd />
           <div className="mx-auto screen">
             <Navbar />
             <main className="relative overflow-hidden min-h-screen">

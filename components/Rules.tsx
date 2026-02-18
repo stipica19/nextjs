@@ -27,10 +27,13 @@ export default function Rules() {
               .map((rule: string, index: number) => (
                 <li
                   key={index}
-                  className="flex items-center text-gray-800 text-sm"
+                  className="flex items-start text-gray-800 text-sm"
                 >
-                  <FaCheckCircle className="text-green-600 mr-3" />
-                  {rule}
+                  <FaCheckCircle
+                    size={18}
+                    className="text-green-600 mr-3 flex-none"
+                  />
+                  <span className="leading-relaxed">{rule}</span>
                 </li>
               ))}
           </ul>

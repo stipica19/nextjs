@@ -119,10 +119,5 @@ export default function TourTabele() {
     </div>
   );
 
-  return (
-    <>
-      {renderTable(tours2025, showAll2025, setShowAll2025, 2025)}
-      {renderTable(tours2026, showAll2026, setShowAll2026, 2026)}
-    </>
-  );
+  return <>{renderTable(tours2026, showAll2026, setShowAll2026, 2026)}</>;
 }

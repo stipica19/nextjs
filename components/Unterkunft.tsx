@@ -24,7 +24,7 @@ export default function Unterkunft() {
           {t("hotel_title")}
           <span className="absolute bottom-0 left-0 w-16 h-1 bg-red-600"></span>
         </h3>
-        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto max-w-[90%] leading-relaxed">
+        <p className="text-sm sm:text-lg mt-2 text-gray-700 text-left mx-auto leading-relaxed md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
           {t("hotel")}
         </p>
 
@@ -52,7 +52,11 @@ export default function Unterkunft() {
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-lg shadow-lg"
-                    loading="lazy"
+                    sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 100vw"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
+                    quality={70}
                   />
                 </div>
               </SwiperSlide>

@@ -8,6 +8,32 @@ import Tour from "@/components/Tour";
 import Unterkunft from "@/components/Unterkunft";
 import { useTranslations } from "next-intl";
 
+import type { Metadata } from "next";
+
+type Params = { locale: "de" | "en" };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        de: "/de",
+        en: "/en",
+        "x-default": "/",
+      },
+    },
+    openGraph: {
+      url: `https://endurodriftbosnien.com/${locale}`,
+    },
+  };
+}
+
 export default function Home() {
   const t = useTranslations();
 

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Button from "./Button";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 
@@ -8,66 +7,96 @@ const Hero = () => {
   const t = useTranslations();
 
   return (
-    <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 md:flex-col-reverse xl:flex-row-reverse relative">
-      {/* Background Image */}
-      <div className="absolute top-0 left-0 w-full h-[80vh] -z-10">
-        <Image
-          src="/logobg.webp"
-          alt="Pozadinska slika Enduro Drift Bosnien"
-          fill
-          priority
-          quality={30}
-          className="object-cover object-center opacity-10"
-        />
+    <section className="relative w-screen h-[98vh] overflow-hidden">
+      {/* Background Image - full viewport width */}
+      <div className="absolute inset-0 -z-10">
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/hero-bild-mobile.webp" />
+          <Image
+            src="/hero-bild.webp"
+            alt="Enduro Drift Bosnien – Enduro Touren in Bosnien"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={70}
+            className="object-cover object-center"
+          />
+        </picture>
       </div>
-      <div className="relative  flex-1 items-center justify-center lg:w-1/2 hidden lg:flex">
-        <Image
-          src="/logobg.webp"
-          alt="Enduro Drift Bosnien Logo"
-          width={800}
-          height={600}
-          className="object-contain"
-          loading="lazy"
-        />
-      </div>
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent -z-10" />
 
-      {/* L strana - Tekst i dugme */}
-      <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
-        <div className="bg-red-500 text-white font-bold text-center py-2 px-4 rounded-md text-lg animate-bounce">
-          <h3>{t("akcija")}</h3>
-        </div>
-        <h1 className="bold-52 lg:bold-88">
-          Enduro Drift <span className="text-red-500">Bosnien</span>{" "}
-        </h1>
-        <p className="regular-16 font-roboto mt-6 text-gray-30 xl:max-w-[520px]">
-          {t("hero-text")}
-        </p>
+      {/* Content container */}
+      <div className="relative z-20 mx-auto h-full max-w-7xl px-6 flex items-center">
+        <div className="flex flex-1 flex-col xl:w-1/2 text-white">
+          <div className="bg-red-600 text-white font-bold text-center py-2 px-4 rounded-md text-sm md:text-base animate-bounce w-fit mb-1">
+            <h3>{t("akcija")}</h3>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+            {t("hero_title")}
+          </h1>
+          <p className="mt-2 text-lg md:text-lg uppercase tracking-widest text-white/80 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+            Enduro <span style={{ color: "red" }}>Drift</span> Bosnien
+          </p>
+          <p className="mt-4 text-base md:text-xl text-white/90 max-w-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+            {t("hero_subtitle")}
+          </p>
 
-        <div className="my-11 flex flex-wrap gap-5">
-          <div className="flex items-center gap-2">
-            {Array(5)
-              .fill(1)
-              .map((_, index) => (
-                <Image
-                  src="/star.png"
-                  key={index}
-                  alt="star"
-                  width={24}
-                  height={24}
-                />
+          <ul className="mt-2 md:mt-6 space-y-1 md:space-y-3 text-white/95 text-base md:text-lg">
+            {[
+              t("hero_points.0"),
+              t("hero_points.1"),
+              t("hero_points.2"),
+              t("hero_points.3"),
+            ].map((item, idx) => (
+              <li
+                key={idx}
+                className="flex items-center gap-2 md:gap-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]"
+              >
+                <span className="text-green-400 font-bold text-xl">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Rating: 5 stars and review count */}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg
+                  key={i}
+                  viewBox="0 0 20 20"
+                  className="w-6 h-6"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="yellow"
+                    d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"
+                  />
+                </svg>
               ))}
+            </div>
+            <p className="font-bold text-white/95">
+              300+{" "}
+              <span className="font-medium text-white/80 ml-1">
+                {t("star")}
+              </span>
+            </p>
           </div>
 
-          <p className="bold-16 lg:bold-20 text-blue-70">
-            203
-            <span className="regular-16 lg:regular-20 ml-1">{t("star")}</span>
-          </p>
-        </div>
-
-        <div className="flex flex-col w-full gap-3 sm:flex-row">
-          <Link href={`/${locale}/anmeldung`}>
-            <Button type="button" title={t("dugme")} variant="btn_red" />
-          </Link>
+          <div className="mt-8 flex w-full flex-col sm:flex-row gap-4">
+            <Link href={`/${locale}/anmeldung`}>
+              <button className="rounded-xl uppercase bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-6 md:px-8 py-4 md:py-5 shadow-lg tracking-widest">
+                {t("hero_btn_primary")}
+              </button>
+            </Link>
+            <Link href={`/${locale}#tours`}>
+              <button className="rounded-xl uppercase bg-white/90 hover:bg-white text-gray-900 font-semibold px-6 md:px-8 py-4 md:py-5 shadow-md border border-white/60 backdrop-blur-sm">
+                {t("hero_btn_secondary")}
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

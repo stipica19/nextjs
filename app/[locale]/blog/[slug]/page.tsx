@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getSlugs, getPostBySlug, getAllPosts } from "@/lib/posts";
+
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 type Params = { locale: "de" | "en"; slug: string };
 
 // -------------------- Helpers --------------------
@@ -22,7 +26,7 @@ function readingTime(markdown?: string | null) {
 export function generateStaticParams() {
   const locales = ["de", "en"] as const;
   return locales.flatMap((locale) =>
-    getSlugs(locale).map((slug: any) => ({ locale, slug }))
+    getSlugs(locale).map((slug: any) => ({ locale, slug })),
   );
 }
 
@@ -59,7 +63,6 @@ export async function generateMetadata({
         images: [{ url: ogImage }],
         locale,
         siteName: "Enduro Drift Bosnien",
-        // publishedTime: date || undefined,
       },
       twitter: {
         card: "summary_large_image",
@@ -135,11 +138,11 @@ export default async function BlogPost({
     notFound();
   }
 
-  const { frontmatter, html, markdown } = post;
+  const { frontmatter, markdown } = post;
   const readTime = readingTime(markdown);
 
   // prev/next u istom jeziku
-  interface BlogPost {
+  interface BlogPostItem {
     slug: string;
     frontmatter: {
       title: string;
@@ -152,8 +155,8 @@ export default async function BlogPost({
     markdown: string | null;
   }
 
-  const all: BlogPost[] = getAllPosts(locale);
-  const idx: number = all.findIndex((p: BlogPost) => p.slug === slug);
+  const all: BlogPostItem[] = getAllPosts(locale);
+  const idx: number = all.findIndex((p: BlogPostItem) => p.slug === slug);
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
 
@@ -245,7 +248,7 @@ export default async function BlogPost({
         </section>
       )}
 
-      {/* Content */}
+      {/* Content (Markdown -> pretty) */}
       <article className="mx-auto max-w-3xl mt-10">
         <div
           className="prose prose-lg prose-neutral max-w-none
@@ -256,8 +259,34 @@ export default async function BlogPost({
                      prose-img:rounded-2xl prose-img:shadow
                      prose-li:marker:text-neutral-400
                      first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:mt-1"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        >
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ children, ...props }) => (
+                <a
+                  {...props}
+                  className="font-semibold underline underline-offset-4 hover:opacity-80"
+                >
+                  {children}
+                </a>
+              ),
+              hr: (props) => (
+                <hr {...props} className="my-10 border-neutral-200" />
+              ),
+              blockquote: ({ children, ...props }) => (
+                <blockquote
+                  {...props}
+                  className="my-6 border-l-4 border-neutral-300 pl-4 italic text-neutral-600"
+                >
+                  {children}
+                </blockquote>
+              ),
+            }}
+          >
+            {markdown ?? ""}
+          </ReactMarkdown>
+        </div>
       </article>
 
       {/* Prev / Next */}
@@ -278,6 +307,7 @@ export default async function BlogPost({
           ) : (
             <div />
           )}
+
           {next ? (
             <Link
               href={`/${locale}/blog/${next.slug}`}

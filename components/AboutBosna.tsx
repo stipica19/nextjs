@@ -9,7 +9,7 @@ const locations = [
     id: 1,
     name: "Prokoško See",
     description: "best_p6",
-    image: "/prokosko.webp",
+    image: "/prokosko.png",
   },
   {
     id: 2,
