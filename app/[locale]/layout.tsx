@@ -15,7 +15,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: routing.defaultLocale };
   const title =
     locale === "de"
       ? "Enduro Touren in Bosnien - Enduro Urlaub | Enduro Drift Bosnien"
@@ -83,9 +83,9 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: routing.defaultLocale };
 
   if (!routing.locales.includes(locale as "de" | "en")) {
     notFound();

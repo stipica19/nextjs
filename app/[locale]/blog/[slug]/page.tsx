@@ -36,7 +36,11 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }) {
-  const { locale, slug } = await params;
+  const paramsValue = await params;
+  if (!paramsValue) {
+    return {};
+  }
+  const { locale, slug } = paramsValue;
 
   try {
     const post = getPostBySlug(slug, locale);
@@ -129,7 +133,11 @@ export default async function BlogPost({
 }: {
   params: Promise<Params>;
 }) {
-  const { locale, slug } = await params;
+  const paramsValue = await params;
+  if (!paramsValue) {
+    notFound();
+  }
+  const { locale, slug } = paramsValue;
 
   let post;
   try {

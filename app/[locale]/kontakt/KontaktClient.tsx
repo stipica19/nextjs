@@ -174,11 +174,24 @@ export default function KontaktClient() {
             <FaWhatsapp />
           </a>
         </div>
-
-        <p className="mt-4 text-gray-400 text-center px-4">
+        <a
+          href="https://www.google.com/maps/place/Silvija+Strahimira+Kranjcevica,+70280+-+Gornji+Vakuf-Uskoplje,+Bosnia+and+Hercegovina"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 text-gray-400 text-center px-4"
+        >
           📍 Silvija Strahimira Kranjcevica, 70280 - Gornji Vakuf-Uskoplje,
           Bosnia and Hercegovina
-        </p>
+        </a>
+        <a href="tel:+38763136095" className="text-gray-300 mt-3">
+          📞 +387 63 136 095
+        </a>{" "}
+        <a
+          href="mailto:endurodriftbosnien@gmail.com"
+          className="text-gray-300 mt-3"
+        >
+          📧 endurodriftbosnien@gmail.com
+        </a>
       </div>
     </div>
   );

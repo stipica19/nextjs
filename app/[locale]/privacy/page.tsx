@@ -8,7 +8,7 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: "de" };
 
   return {
     alternates: {
@@ -25,7 +25,7 @@ export default async function PrivacyPage({
 }: {
   params: Promise<Params>;
 }) {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: "de" };
 
   const isDe = locale === "de";
 

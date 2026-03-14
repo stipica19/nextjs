@@ -19,21 +19,19 @@ interface AnmeldungType {
   createdAt: string;
 }
 
-export default function AdminPanel() {
+export default function AdminListClient() {
   const [anmeldungen, setAnmeldungen] = useState<AnmeldungType[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedAnmeldung, setSelectedAnmeldung] =
     useState<AnmeldungType | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Dohvatanje liste prijava
   useEffect(() => {
     async function fetchAnmeldungen() {
       try {
         const res = await fetch("/api/anmeldung");
         const data = await res.json();
         setAnmeldungen(data);
-        console.log(data);
       } catch (error) {
         console.error("Greška pri dohvatanju prijava:", error);
       } finally {
@@ -48,8 +46,8 @@ export default function AdminPanel() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-1">
-      <div className="max-w-6xl mx-auto bg-white p-1 rounded-lg shadow-lg">
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-4">📋 Lista Prijava</h1>
         {loading ? (
           <Loader />
@@ -78,7 +76,7 @@ export default function AdminPanel() {
                 {anmeldungen.length > 0 ? (
                   anmeldungen
                     .slice(0, showAll ? anmeldungen.length : 10)
-                    .map((anmeldung, index) => (
+                    .map((anmeldung) => (
                       <tr
                         key={anmeldung._id}
                         className="border-b hover:bg-gray-50"
@@ -97,7 +95,6 @@ export default function AdminPanel() {
                           {new Date(anmeldung.createdAt).toLocaleDateString()}
                         </td>
                         <td className="p-2 sm:p-3 text-xs sm:text-sm flex gap-2">
-                          {" "}
                           <button
                             onClick={() => handleShowDetails(anmeldung)}
                             className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
@@ -116,7 +113,6 @@ export default function AdminPanel() {
                 )}
               </tbody>
             </table>
-            {/* Dugme za prikaz više */}
 
             <div
               className="mt-4 flex justify-center"
@@ -133,7 +129,7 @@ export default function AdminPanel() {
           </div>
         )}
       </div>
-      {/* MODAL ZA DETALJE PRIJAVE */}
+
       {selectedAnmeldung && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
           <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-[500px] max-h-[80vh] overflow-y-auto">
@@ -152,7 +148,7 @@ export default function AdminPanel() {
                 {selectedAnmeldung.tour_number?.tour_number} -{" "}
                 {selectedAnmeldung.tour_type}
               </p>
-              <td className="p-2 sm:p-3 text-xs sm:text-sm">
+              <p className="p-2 sm:p-3 text-xs sm:text-sm">
                 {new Date(
                   selectedAnmeldung.tour_number?.checkIn_date,
                 ).toLocaleString()}{" "}
@@ -160,7 +156,7 @@ export default function AdminPanel() {
                 {new Date(
                   selectedAnmeldung.tour_number?.checkOut_date,
                 ).toLocaleString()}
-              </td>
+              </p>
               <p>
                 <strong>Osobe:</strong> {selectedAnmeldung.number_person}
               </p>

@@ -24,7 +24,7 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: "de" };
   const isDe = locale === "de";
 
   return {
@@ -48,7 +48,7 @@ export default async function BlogIndex({
 }: {
   params: Promise<Params>;
 }) {
-  const { locale } = await params;
+  const { locale } = (await params) ?? { locale: "de" };
 
   const posts: Post[] = getAllPosts(locale);
   const t = await getTranslations({ locale, namespace: "" });

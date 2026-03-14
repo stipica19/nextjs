@@ -2,6 +2,9 @@
 @import "swiper/css/pagination";
 @import "swiper/css/navigation";
 
+@reference "tailwindcss";
+@config "../tailwind.config.ts";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +16,11 @@
 }
 
 body {
-  @apply font-roboto;
+  font-family: "Roboto", sans-serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
 }
 
 @layer utilities {

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store"; // Adjusted the import path to use an absolute path based on Next.js alias
 import { loadUser, logout } from "@/store/userSlice";
 import { Menu } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -130,6 +131,37 @@ const Navbar = () => {
         ))}
       </div>
 
+      {/* Social icons (desktop) */}
+      <div className="hidden lg:flex items-center gap-3">
+        <a
+          href="https://www.facebook.com/profile.php?id=100054829614691"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-blue-600 transition"
+          aria-label="Facebook"
+        >
+          <FaFacebook size={24} />
+        </a>
+        <a
+          href="https://www.instagram.com/enduro_drift_bosnien/?locale=en-TH&hl=ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-pink-600 transition"
+          aria-label="Instagram"
+        >
+          <FaInstagram size={24} />
+        </a>
+        <a
+          href="https://www.tiktok.com/@endurodriftbosnien"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-gray-900 transition"
+          aria-label="TikTok"
+        >
+          <FaTiktok size={24} />
+        </a>
+      </div>
+
       {/* Mobile Menu Button */}
       <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden">
         <Menu width={32} height={32} className="cursor-pointer" />
@@ -216,6 +248,40 @@ const Navbar = () => {
                 />
               </button>
             ))}
+          </div>
+        </div>
+
+        {/* Social icons (mobile) */}
+        <div className="mt-6 px-6">
+          <p className="text-gray-700 font-medium">Social:</p>
+          <div className="flex items-center gap-4 mt-2">
+            <a
+              href="https://www.facebook.com/profile.php?id=100054829614691"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-600 transition"
+              aria-label="Facebook"
+            >
+              <FaFacebook size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/enduro_drift_bosnien/?locale=en-TH&hl=ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-pink-600 transition"
+              aria-label="Instagram"
+            >
+              <FaInstagram size={24} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@endurodriftbosnien"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-gray-900 transition"
+              aria-label="TikTok"
+            >
+              <FaTiktok size={24} />
+            </a>
           </div>
         </div>
       </div>
